@@ -1,0 +1,44 @@
+{{#if login}}
+{{>loginheader}}
+{{else}}
+{{>header}}
+{{/if}}
+<div class="row" style="position: relative;    max-height:0px ;!important">
+  {{#each foundCategory}}
+
+  <div style="width: 12px;" class="col-12 col-md-3">
+    <div class="thumbnail">
+      <div class="card">
+       <h4>{{this.msg}}</h4>
+        <img src="/uploads/{{this.image}}" alt="..." class="img-responsive" width="200" height="200">
+        <p style="text-transform: uppercase;"s>{{this.itemName}}</p>
+        <h5 style="text-transform: uppercase;">Category: {{this.category}}</h5>
+        <a href="/users/product/{{this._id}}" class="genric-btn primary-border radius">view</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+</div>
+
+
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 86%;
+    margin: 37px;
+    padding: 12px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 65px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .thumbnail {
+    padding: 2px 16px;
+    border: none !important
+  }
+</style>
