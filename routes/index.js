@@ -99,6 +99,8 @@ router
    if(data){
     if(req.body.email!=data.email){
       error.push({msg:"We Sorry for the Inconvnence Please Sign up later "})
+    }if(req.body.email==data.email){
+      error.push({msg:"You are already Signed Up"})
     }if(req.body.email==undefined || req.body.password==undefined){
       error.push({msg:"Please enter crendentials and submit"})
     }if(req.body.password!=req.body.comparepassword){
@@ -115,6 +117,32 @@ router
   }
  })
 
+// google authentication--------------------------------------------------------------------------------------------------
+ router.get('/auth/google',
+ passport.authenticate('google', { scope: ["profile", "email"]}),(req,res)=>{
+ }
+);
+
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/users/signin' }),
+  (req, res)=> {
+  
+    res.cookie("userData", req.user.ops[0].email); 
+    var tokenData ={
+      email : req.body.email
+  }
+  let token = jwt.sign(tokenData,"secret",{expiresIn:86400})
+  res.cookie(
+      'accessToken',
+      token,{
+          maxAge:365*24*60*60*100
+  });
+    // Successful authentication, redirect home.
+    res.redirect('/');
+});
+
+
+// google authentication end==================================================================----------------------------------------------------------------------------------
  router
 .get("/signin",async(req,res)=>{
   let message = req.flash('error')
@@ -123,14 +151,15 @@ router
 
 router
 .post('/signin',passport.authenticate('local',{failureRedirect:'/signin',failureFlash:true}),(req,res)=>{
+  // cookie for user
   res.cookie("userData", req.body.email); 
+  // jwt token
   var tokenData ={
     email : req.body.email
     
 }
-
 let token = jwt.sign(tokenData,"secret",{expiresIn:86400})
-
+// cookie for jwt
 res.cookie(
     'accessToken',
     token,{
@@ -142,7 +171,7 @@ res.render('partials/loginheader')
 );
 
 
-// login and sisn up ends======================================================================================
+// logout ==========================================================================================================================
 router.get('/logout',async(req,res)=>{
   req.logout()
   req.session.destroy()

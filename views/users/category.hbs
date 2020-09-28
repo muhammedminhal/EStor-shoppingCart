@@ -3,13 +3,14 @@
 {{else}}
 {{>header}}
 {{/if}}
+ <h4 class="alert alert-danger">{{dialoge}}</h4>
 <div class="row" style="position: relative;    max-height:0px ;!important">
   {{#each foundCategory}}
 
   <div style="width: 12px;" class="col-12 col-md-3">
     <div class="thumbnail">
       <div class="card">
-       <h4>{{this.msg}}</h4>
+      
         <img src="/uploads/{{this.image}}" alt="..." class="img-responsive" width="200" height="200">
         <p style="text-transform: uppercase;"s>{{this.itemName}}</p>
         <h5 style="text-transform: uppercase;">Category: {{this.category}}</h5>

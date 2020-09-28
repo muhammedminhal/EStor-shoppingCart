@@ -26,6 +26,7 @@ var upload = multer({
 
 // =================================================================================================================
 /* GET users listing. seller form  */
+// seller get mode route=================================================================
 router
   .get('/upload', async (req, res) => {
     let token = req.cookies.accessToken
@@ -46,7 +47,7 @@ router
       }
     })
   })
-
+  // seller mode post=============================================================
   .post('/upload', upload, async (req, res) => {
     let token = req.cookies.accessToken
     console.log(token)
@@ -94,7 +95,7 @@ router
 
 /* GET users listing. seller form  END=================================================================================== */
 
-/* GET users listing. seller myFUll products  start */
+/* GET users listing. seller myFUll products  start============================================================ */
 
 router
   .get("/sellerview", async (req, res) => {
@@ -211,11 +212,7 @@ router.get('/category/:name', async (req, res) => {
         await findCategory.forEach(data => {
           foundCategory.push(data)
         })
-        if (findCategory == undefined) {
-          foundCategory.push({ msg: "There is nothing to view" })
-        }
         res.render('users/category', { foundCategory: foundCategory, login: false })
-        console.log('daata', foundCategory)
       }
       catch (err) {
         res.status(200)
@@ -316,19 +313,19 @@ router.get('/delete/:category', async (req, res) => {
 })
 
 
-router.get('/profile',async(req,res)=>{
+router.get('/profile', async (req, res) => {
 
   var userEmail = req.cookies.userData;
   const email = { "email": userEmail }
   const db = req.app.locals.db
-  await db.collection('user').findOne(email, async (err, data) =>{
-    console.log("profile",data)
-if(err){
-  console.log(err)
-  res.status(500)
-}else{
-  res.render('users/profile',{data:data})
-}
+  await db.collection('user').findOne(email, async (err, data) => {
+    console.log("profile", data)
+    if (err) {
+      console.log(err)
+      res.status(500)
+    } else {
+      res.render('users/profile', { data: data })
+    }
   })
 })
 
@@ -359,7 +356,7 @@ module.exports = router;
 
 
 
-router.get('/profilefound',(req,res)=>{
+router.get('/profilefound', (req, res) => {
   res.send('data fond')
 })
 
@@ -367,5 +364,5 @@ function forwardAuthenticated(req, res, next) {
   if (!req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/');      
+  res.redirect('/');
 }
