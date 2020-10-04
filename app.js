@@ -24,6 +24,8 @@ mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (
   }
 })
 
+
+
 var app = express();
 
 
@@ -63,7 +65,6 @@ app.use((req, res, next) => {
 
 
 // imgae upload
-
 
 app.use(express.static(__dirname + "./public/"));
 

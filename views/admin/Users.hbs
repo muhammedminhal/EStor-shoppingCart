@@ -1,0 +1,365 @@
+
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="/assets/css/feathericon.min.css">
+		
+		<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+	
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="/assets/img/logo.png" alt="Logo">
+					</a>
+					<a href="index.html" class="logo logo-small">
+						<img src="/assets/img/logo-small.png" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img class="rounded-circle" src="/assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>Ryan Taylor</h6>
+									<p class="text-muted mb-0">Administrator</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="login.html">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span>Main</span>
+							</li>
+							<li class=""> 
+								<a href="/admin/Profile"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li> 
+								<a href="/admin/Products"><i class="fe fe-layout"></i> <span>Products</span></a>
+							</li>
+							<li> 
+								<a href="/admin/Users"><i class="fe fe-users"></i> <span>Users</span></a>
+							</li>
+							<li> 
+								<a href="doctor-list.html"><i class="fe fe-user-plus"></i> <span>Category</span></a>
+							</li>
+							<li> 
+								<a href="patient-list.html"><i class="fe fe-user"></i> <span>Banners</span></a>
+							</li>
+							
+							
+							
+								
+								</ul>
+		
+						
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+         
+			<!-- /Page Wrapper -->
+		
+    <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-7 col-auto">
+								<h3 class="page-title">Users</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Users</li>
+								</ul>
+							</div>
+							<div class="col-sm-5 col">
+								<a href="/admin/useradd"  class="btn btn-primary float-right mt-2">Add User</a>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+		
+                    	<div class="row">
+						<div class="col-md-12">
+						
+							<!-- Recent Orders -->
+									<div class="card card-table flex-fill">
+								<div class="card-header">
+									<h4 class="card-title">Users</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-hover table-center mb-0">
+											<thead>
+												
+												<tr>
+												<th>Name</th>
+													<th>Email</th>
+													<th>Mobile</th>
+													<th>Address</th>
+													<th>ID</th>
+                                                    <th></th>
+                                                    <th></th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													{{#each userData}}
+																			 <td>{{this.name}}</td>
+    <td>{{this.email}}</td>
+        <td>{{this.mobile}}</td>
+            <td>{{this.address}}</td>
+                <td>{{this._id}}</td>
+
+													<td >
+														
+															<a class="btn btn-sm bg-success-light" href="/admin/useredit/{{this._id}}">
+																<i class="fe fe-pencil"></i> Edit
+															</a>
+													</td>
+                                                    <td>
+															<a   id="delete"  class="btn btn-sm bg-danger-light">
+																<i class="fe fe-trash"></i> Delete
+															</a>
+														
+													</td>
+                                                                                             		 <div class="bg-modal">
+		  <div id="close"  >+
+		  </div>
+		<div class="modal-content">
+			
+		  
+           <div class="plc">
+          <p>Are You Sure You Want To Delete This</p>
+        </div>
+			   <a href="/admin/userdelete/{{this._id}}"><button class="buttn" type="submit" >Yes</button> </a>  <button class="buttn" id="no" type="submit" >No</button>
+		</div>
+	</div>
+											
+														
+												
+												</tr>
+											{{/each}}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+										<!-- /Recent Orders -->
+							
+						</div>
+					</div>
+				</div>			
+                <!-- Delete Modal -->
+	
+
+	<script >
+		document.getElementById('delete').addEventListener('click',function(){
+			document.querySelector('.bg-modal').style.display="flex"
+		});
+		document.getElementById('close').addEventListener('click',function(){
+           
+			document.querySelector('.bg-modal').style.display='none'
+		})
+        document.getElementById('no').addEventListener('click',function(){
+			document.querySelector('.bg-modal').style.display='none'
+		})
+
+	</script>
+			<!-- /Delete Modal -->
+			</div>
+		<!-- /Main Wrapper -->
+
+
+        <style>
+
+.bg-modal{
+	width:100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	top: 0em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+	position: fixed;
+}
+
+.modal-content{
+    width: 392px;
+    height: 243px;
+    background-color: rgb(255 255 255);
+    border-radius: 31px;
+    text-align: center;
+    padding: 33px;
+        margin-right: 221px;
+    padding-top: 14px;
+
+}
+
+
+#close{
+
+	position: absolute;
+    top: 158px;
+    color: #ffffff;
+    right: 569px;
+    float: right;
+    font-size: 57px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    font-family: auto;
+
+}
+
+
+.form{
+	width:100%;
+	position: relative;
+	height: 50px;
+	overflow: hidden;
+
+    margin-top: 65px;
+}
+
+
+
+
+
+
+
+
+.form input:focus + .label-name .content-name,
+.form input :valid + .label-name .content-name{
+transform: translateY(-150%);
+font-size: 14px;
+color:grey;
+
+}
+
+.form input:focus + .label-name::after,
+  .form input:valid + .label-name::after{
+	transform: translateX(100%);
+}
+
+
+
+
+
+.buttn{
+	width: 331px;
+	height: 38px;
+	background-color: rgba(23,17,81,1);
+	color: rgba(248,248,248,1);
+	margin-top: 11px;
+	border: none;
+	
+}
+
+
+
+p{
+	display: inline;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    margin: 0px 6px 0px;
+    text-align: center;
+}
+.plc{
+    margin-top: 43px;
+    font-size: 10px;
+    text-align: left;
+}
+
+
+
+
+a:link {
+    text-decoration: none ;
+    font-size: 13px;
+  }
+
+
+        </style>
+		
+		<!-- jQuery -->
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="/assets/plugins/morris/morris.min.js"></script>  
+		<script src="/assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/assets/js/script.js"></script>
+
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->

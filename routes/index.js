@@ -14,10 +14,10 @@ var flash = require('connect-flash')
 router
 .get('/', async function(req, res, next) {
   let token = req.cookies.accessToken
+   var userEmail = req.cookies.userData;
   jwt.verify(token,"secret",async(err,decode)=>{
     if(err){
    
-      
       try{
         const database =req.app.locals.db;
         const collection = database.collection('products')
@@ -38,23 +38,29 @@ router
         throw err
       }
     }else{
-         
-         
+      var userEmail = req.cookies.userData;
       try{
         const database =req.app.locals.db;
         const collection = database.collection('products')
         const Category = database.collection('category')
-        const findProduct = await collection.find({})
-        const categoryProject = await Category.find({})
-        const result =[]
-        const Data =[]
-        await categoryProject.forEach(data => {
-          Data.push(data)
-          })
-        await findProduct.forEach(docs => {
-        result.push(docs)
+        const users = database.collection('users')
+        await users.findOne(userEmail,async(err,docs)=>{
+          if(!err){
+            const findProduct = await collection.find({})
+            const categoryProject = await Category.find({})
+            const result =[]
+            const Data =[]
+            await categoryProject.forEach(data => {
+              Data.push(data)
+              })
+            await findProduct.forEach(docs => {
+            result.push(docs)
+            })
+            res.render('users/index', { result:result,Data:Data ,docs:docs,login:true});
+          }
         })
-        res.render('users/index', { result:result,Data:Data ,login:true});
+
+      
       }
       catch(err){
         throw err

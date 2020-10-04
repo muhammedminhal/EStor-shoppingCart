@@ -1,0 +1,76 @@
+
+<form class="form-horizontal" action="/admin/productedit/{{data._id}}" method="POST">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit form</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="itemName">itemName</label>  
+  <div class="col-md-4">
+  <input id="itemName" name="itemName" type="text" placeholder="itemName"  value="{{data.itemName}}"  class="form-control input-md" required="">
+  
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="location">location</label>
+  <div class="col-md-4">
+    <select id="location" name="location" class="form-control">
+      <option >calicut</option>
+      <option >wayanad</option>
+      <option >malapuram</option>
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category">category</label>
+  <div class="col-md-4">
+    <select id="category" name="category" class="form-control">
+      <option >craft</option>
+      <option >Art</option>
+      <option >Cake</option>
+      <option >Bake</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Date">Date</label>  
+  <div class="col-md-4">
+  <input id="Date" value="{{data.Date}}" name="Date" type="date" placeholder="Date" class="form-control input-md" required="">
+ 
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Description">Description</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="Description"   name="Description"  >{{data.Description}}</textarea>
+  </div>
+</div>
+
+<!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="filebutton">File Button</label>
+  <div class="col-md-4">
+    <input id="filebutton" name="filebutton" value="{{data.image}}" class="input-file" type="file">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
+  <div class="col-md-4">
+    <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Save Changes</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

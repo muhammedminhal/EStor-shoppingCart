@@ -1,183 +1,315 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-{{>loginheader}}
 
 
 
-<div class="container emp-profile">
-            <form method="post" action="/users/editprofile" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src='' alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                Your Profile
-                                    </h5>
-                                
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div>
+
+ <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="/assets/css/feathericon.min.css">
+		
+		<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+
+        
+		
+	
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+		
+			<!-- Header -->
+      		{{#if login}}
+            <div class="header">
+			
+				<!-- Logo -->
+                  <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
                 </div>
-                    <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name:</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p style="text-transform: uppercase;">{{data.name}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email:</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{data.email}}</p>
-                                            </div>
-                                        </div>
-                                        {{!-- <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone:</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input name="phone" placeholder="Phone" type="text" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>About:</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <Textarea name="about" placeholder="About You" wrap="hard" ></Textarea>
-                                            </div>
-                                      </div>
-                                      <div>
-                                          <button class="btn btn-primary" type="submit">Submit</button>
-                                      </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                     </form>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									
+								</div>
+								<div class="user-text">
+									<h6>Ryan Taylor</h6>
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="/users/profile">My Profile</a>
+							<a class="dropdown-item" href="/logout">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+{{else}}
+<!-- Header -->
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
                 </div>
-                      
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+				
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+							
+								<div class="user-text">
+							
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="/signin">SignIn</a>
+							<a class="dropdown-item" href="/signup">SignUp</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+{{/if}}
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" style="    background-color:#ffffff8c;"  id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span style="color: #000;">Main</span>
+							</li>
+							<li > 
+								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;" href=""><i class="fe fe-layout"></i> <span>Chat</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;" href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
+							</li>	
+								</ul>
+		
+				
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+
+					<!-- /Page Header -->			
+						
+							<!-- Recent Orders -->
+								<div class="row">
+			<div class="col-md-12">
+		
+
+				<!-- Carousel indicators -->
+
+				<!-- Wrapper for carousel items -->
+				
+
+				{{!-- cards --}}
+	<div class="row">
+						<div class="col-md-12">
+						
+							
+							<div class="tab-content profile-tab-cont">
+								
+								<!-- Personal Details Tab -->
+								<div class="tab-pane fade show active" id="per_details_tab">
+								
+									<!-- Personal Details -->
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="card" style="ox-shadow: 0 4px 8px 0 rgba(0, 24, 0, 0.2);
+    transition: 0.3s;
+    width: 95%;
+    margin: 43px;
+    margin: 48px;
+    adding: 10px;
+    height: 78%;">
+												<div class="card-body">
+													<h5 class="card-title d-flex justify-content-between">
+														<span>Personal Details</span> 
+														<a class="edit-link" data-toggle="modal" href="#edit_personal_details"><i class="fa fa-edit mr-1"></i>Edit</a>
+													</h5>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Name</p>
+														<p class="col-sm-10">John Doe</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Date of Birth</p>
+														<p class="col-sm-10">24 Jul 1983</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
+														<p class="col-sm-10">johndoe@example.com</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
+														<p class="col-sm-10">305-310-5857</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0">Address</p>
+														<p class="col-sm-10 mb-0">4663  Agriculture Lane,<br>
+														Miami,<br>
+														Florida - 33165,<br>
+														United States.</p>
+													</div>
+												</div>
+											</div>
+{{!-- cards --}}
+			</div>
+			<!-- Carousel controls -->
+
+		</div>
+							<!-- /Feed Activity -->
+							
+						</div>
+					</div>
+				
+						</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
         </div>
-        {{>footer}}
+		<!-- /Main Wrapper -->
+	
+
+<style>
+	.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 108%;
+    margin: 47px;
+    padding: 10px;
+    height: 50%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 65px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.thumbnail {
+		padding: 2px 16px;
+		border: none !important
+	}
+</style>
+
+		<!-- jQuery -->
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="/assets/plugins/morris/morris.min.js"></script>  
+		<script src="/assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/assets/js/script.js"></script>
 
 
-        <style>
-            body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
-.emp-profile{
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: #fff;
-}
-.profile-img{
-    text-align: center;
-}
-.profile-img img{
-    width: 70%;
-    height: 100%;
-}
-.profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-}
-.profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-}
-.profile-head h5{
-    color: #333;
-}
-.profile-head h6{
-    color: #0062cc;
-}
-.profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
-}
-.proile-rating{
-    font-size: 12px;
-    color: #818182;
-    margin-top: 5%;
-}
-.proile-rating span{
-    color: #495057;
-    font-size: 15px;
-    font-weight: 600;
-}
-.profile-head .nav-tabs{
-    margin-bottom:5%;
-}
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
-    border: none;
-}
-.profile-head .nav-tabs .nav-link.active{
-    border: none;
-    border-bottom:2px solid #0062cc;
-}
-.profile-work{
-    padding: 14%;
-    margin-top: -15%;
-}
-.profile-work p{
-    font-size: 12px;
-    color: #818182;
-    font-weight: 600;
-    margin-top: 10%;
-}
-.profile-work a{
-    text-decoration: none;
-    color: #495057;
-    font-weight: 600;
-    font-size: 14px;
-}
-.profile-work ul{
-    list-style: none;
-}
-.profile-tab label{
-    font-weight: 600;
-}
-.profile-tab p{
-    font-weight: 600;
-    color: #0062cc;
-}
-        </style>
+{{!-- new========================================================================================================= --}}
+
+
+
+		
+	

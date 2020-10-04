@@ -1,11 +1,274 @@
-{{#if login}}
-{{>loginheader}}
+
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="/assets/css/feathericon.min.css">
+		
+		<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+		
+	
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+
+			{{#if login}}
+            <div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                  <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									
+								</div>
+								<div class="user-text">
+									<h6>{{docs.name}}</h6>
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="users/profile">My Profile</a>
+							<a class="dropdown-item" href="/logout">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
 {{else}}
-{{>header}}
+<!-- Header -->
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="index.html" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+				
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+							
+								<div class="user-text">
+									
+							
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="/signin">SignIn</a>
+							<a class="dropdown-item" href="/signup">SignUp</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
 {{/if}}
-<div class="container">
-	{{!-- category start=============================== =================================================================================--}}
-	<style>
+		
+			
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" style="    background-color:#ffffff8c;" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span style="color: #000;" >Main</span>
+							</li>
+							<li > 
+								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;"  href=""><i class="fe fe-layout"></i> <span>Chat</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;"  href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
+							</li>	
+								</ul>
+		
+						
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">Welcome </h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item active"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+
+					
+						
+							<!-- Recent Orders -->
+								<div class="row">
+			<div class="col-md-12">
+				<h2>Products <b>Category</b></h2>
+				<hr>
+
+				<!-- Carousel indicators -->
+
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="item carousel-item active">
+						<div class="row">
+							{{#each Data}}
+							<div class="col-12 col-md-3">
+								<div class="thumb-wrapper">
+									<div class="img-box">
+										<a href="/users/category/{{this.name}}"><img src="/uploads/{{this.image}}"
+												class="img-responsive img-fluid" width="120" height="120"
+												alt="image"></a>
+									</div>
+									<div class="thumb-content">
+										<h4 style="text-transform: uppercase;">{{this.name}}</h4>
+									</div>
+								</div>
+							</div>
+	
+							{{/each}}
+
+							{{!--  --}}
+						</div>
+					</div>
+				</div>
+
+				{{!-- cards --}}
+				<div class="row" style="position: relative;    max-height:0px ;!important">
+	{{#each result}}
+
+	<div style="width: 12px;" class="col-12 col-md-3">
+		<div class="thumbnail">
+			<div class="card">
+
+				<img src="uploads/{{this.image}}" alt="..." class="img-responsive" height="200" width="200">
+				<p style="text-transform: uppercase;">{{this.itemName}}</p>
+				<h5 style="text-transform: uppercase;">Category: {{this.category}}</h5>
+				<a href="/users/product/{{this._id}}" class="genric-btn primary-border radius"><button>view</button></a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+{{!-- cards --}}
+			</div>
+			<!-- Carousel controls -->
+
+		</div>
+							<!-- /Feed Activity -->
+							
+						</div>
+					</div>
+				
+						</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+			<style>
 		font-family: "Open Sans",
 		sans-serif;
 		}
@@ -179,81 +442,7 @@
 			color: #ffc000;
 		}
 	</style>
-
-
-	<div class="container">
-		{{!-- neew image --}}
-<div>
-	<img  src="https://statics.olx.in/external/base/img/hero-bg-in.jpg"  style="
-    margin-left: -511px;
-">
-</div>
-
-		{{!-- image --}}
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Products <b>Category</b></h2>
-				<hr>
-
-				<!-- Carousel indicators -->
-
-				<!-- Wrapper for carousel items -->
-				<div class="carousel-inner">
-					<div class="item carousel-item active">
-						<div class="row">
-							{{#each Data}}
-							<div class="col-12 col-md-3">
-								<div class="thumb-wrapper">
-									<div class="img-box">
-										<a href="/users/category/{{this.name}}"><img src="/uploads/{{this.image}}"
-												class="img-responsive img-fluid" width="120" height="120"
-												alt="image"></a>
-									</div>
-									<div class="thumb-content">
-										<h4 style="text-transform: uppercase;">{{this.name}}</h4>
-									</div>
-								</div>
-							</div>
-
-							{{/each}}
-
-							{{!--  --}}
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Carousel controls -->
-
-		</div>
-	</div>
-</div>
-</div>
-
-{{!-- category end======================================================================================== --}}
-
-
-<div class="row" style="position: relative;    max-height:0px ;!important">
-	{{#each result}}
-
-	<div style="width: 12px;" class="col-12 col-md-3">
-		<div class="thumbnail">
-			<div class="card">
-
-				<img src="uploads/{{this.image}}" alt="..." class="img-responsive" height="200" width="200">
-				<p style="text-transform: uppercase;">{{this.itemName}}</p>
-				<h5 style="text-transform: uppercase;">Category: {{this.category}}</h5>
-				<a href="/users/product/{{this._id}}" class="genric-btn primary-border radius"><button>view</button></a>
-			</div>
-		</div>
-	</div>
-	{{/each}}
-</div>
-</div>
-<div style="position: inherit;margin-top: 787px;">
-	{{>footer}}
-</div>
-
-<style>
+	<style>
 	.titlebar {
 		overflow: hidden;
 	}
@@ -319,12 +508,12 @@
 
 <style>
 	.card {
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-		transition: 0.3s;
-		width: 86%;
-		margin: 37px;
-		padding: 12px;
-		height: 50%;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 108%;
+    margin: 47px;
+    padding: 10px;
+    height: 50%;
 	}
 
 	.card:hover {
@@ -336,3 +525,23 @@
 		border: none !important
 	}
 </style>
+
+		<!-- jQuery -->
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="/assets/plugins/morris/morris.min.js"></script>  
+		<script src="/assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/assets/js/script.js"></script>
+
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->

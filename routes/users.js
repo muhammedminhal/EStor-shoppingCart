@@ -28,13 +28,18 @@ var upload = multer({
 /* GET users listing. seller form  */
 // seller get mode route=================================================================
 router
-  .get('/upload', async (req, res) => {
+  .get('/upload',logedIn, async (req, res) => {
     let token = req.cookies.accessToken
     jwt.verify(token, 'secret', async (err, paylod) => {
       if (err) {
-        console.log(err)
-        res.status(401)
-        res.render('users/signin', { msg: "You are not an Autherised user please sign in" })
+        const database = req.app.locals.db;
+        const Category = database.collection('category')
+        const categoryList = await Category.find({})
+        const Data = []
+        await categoryList.forEach(data => {
+          Data.push(data)
+        })
+        res.render('users/sellerForm', { data: Data, login: false })
       } else {
         const database = req.app.locals.db;
         const Category = database.collection('category')
@@ -48,7 +53,7 @@ router
     })
   })
   // seller mode post=============================================================
-  .post('/upload', upload, async (req, res) => {
+  .post('/upload',logedIn, upload, async (req, res) => {
     let token = req.cookies.accessToken
     console.log(token)
     jwt.verify(token, "secret", async (err, decode) => {
@@ -98,16 +103,26 @@ router
 /* GET users listing. seller myFUll products  start============================================================ */
 
 router
-  .get("/sellerview", async (req, res) => {
+  .get("/sellerview",logedIn, async (req, res) => {
+    var userEmail = req.cookies.userData;
+    const email = { "email": userEmail }
     try {
-      const database = req.app.locals.db;
-      const collection = database.collection('products')
-      const findProduct = await collection.find({})
-      const result = []
-      await findProduct.forEach(docs => {
-        result.push(docs)
+      const db = req.app.locals.db
+      await db.collection('user').findOne(email,async(err,data)=>{
+        if(err){
+console.log('err')
+        }else{
+          var userData = data._id
+          const database = req.app.locals.db;
+          const collection = database.collection('products')
+          const findProduct = await collection.find({"userdata":userData})
+          const result = []
+          await findProduct.forEach(docs => {
+            result.push(docs)
+          })
+          res.render('users/sellerView', { docs: result, login: true })
+        }
       })
-      res.render('users/sellerView', { docs: result, login: true })
     }
     catch (err) {
       throw err
@@ -212,7 +227,7 @@ router.get('/category/:name', async (req, res) => {
         await findCategory.forEach(data => {
           foundCategory.push(data)
         })
-        res.render('users/category', { foundCategory: foundCategory, login: false })
+        res.render('users/category', { foundCategory: foundCategory,category:Category, login: false })
       }
       catch (err) {
         res.status(200)
@@ -231,7 +246,7 @@ router.get('/category/:name', async (req, res) => {
         if (findCategory == undefined) {
           foundCategory.push({ msg: "There is nothing to view" })
         }
-        res.render('users/category', { foundCategory: foundCategory, login: true })
+        res.render('users/category', { foundCategory: foundCategory,category:Category, login: true })
         console.log('daata', foundCategory)
       }
       catch (err) {
@@ -255,6 +270,7 @@ router
       const productsEdit = await collection.findOne(editParams, (err, data) => {
         if (!err) {
           res.render("users/edit", { data: data, login: true })
+          console.log("product data",data)
         } else {
           console.log("error")
         }
@@ -266,8 +282,11 @@ router
   })
 
 
-  .post("/edit/:id", upload, async (req, res) => {
+  .post("/edit/:id",upload, async (req, res) => {
     const editParams = { "_id": objectId(req.params.id) }
+    const image = req.file.filename
+    console.log("edit set" ,req.body)
+    
     const updateProduct = {
       $set: {
         itemName: req.body.itemName,
@@ -275,15 +294,16 @@ router
         location: req.body.location,
         Date: req.body.Date,
         Description: req.body.Description,
-
-
+        image:image
+     
       }
     };
     const option = { upsert: false }
+   
     try {
       const database = req.app.locals.db;
       const collection = database.collection('products')
-      await collection.updateOne(editParams, updateProduct, option)
+      await collection.updateOne(editParams, updateProduct,option)
       console.log(updateProduct, "edit par", editParams)
       res.redirect("/users/sellerview")
     }
@@ -292,15 +312,16 @@ router
     }
   })
 
+  // product delete
 
 
-router.get('/delete/:category', async (req, res) => {
-  const deleteParams = req.params.category
-  console.log("deleteparam", deleteParams)
+router.get('/delete/:id', async (req, res) => {
+  const editParams = { "_id": objectId(req.params.id) }
+  console.log("deleteparam", editParams)
   try {
     const database = req.app.locals.db;
     const collection = await database.collection('products')
-    collection.deleteOne({ category: deleteParams }, (err, data) => {
+    collection.deleteOne(editParams,(err, data) => {
       if (!err) {
         console.log("item deleted", data)
         res.redirect('/users/sellerview')
@@ -312,24 +333,44 @@ router.get('/delete/:category', async (req, res) => {
   }
 })
 
+// user profile
+
 
 router.get('/profile', async (req, res) => {
-
-  var userEmail = req.cookies.userData;
-  const email = { "email": userEmail }
-  const db = req.app.locals.db
-  await db.collection('user').findOne(email, async (err, data) => {
-    console.log("profile", data)
-    if (err) {
-      console.log(err)
-      res.status(500)
-    } else {
-      res.render('users/profile', { data: data })
+  let token = req.cookies.accessToken
+  jwt.verify(token,'secret',async(err,decode)=>{
+    if(err){
+      var userEmail = req.cookies.userData;
+      const email = { "email": userEmail }
+      const db = req.app.locals.db
+      await db.collection('user').findOne(email, async (err, data) => {
+        console.log("profile", data)
+        if (err) {
+          console.log(err)
+          res.status(500)
+        } else {
+          res.render('users/profile', { data: data ,login:false})
+        }
+      })
+    }else{
+      var userEmail = req.cookies.userData;
+      const email = { "email": userEmail }
+      const db = req.app.locals.db
+      await db.collection('user').findOne(email, async (err, data) => {
+        console.log("profile", data)
+        if (err) {
+          console.log(err)
+          res.status(500)
+        } else {
+          res.render('users/profile', { data: data ,login:true})
+        }
+      })
     }
   })
+ 
 })
 
-module.exports = router;
+
 
 
 // router.post('/editprofile', async(req,res)=>{
@@ -360,9 +401,13 @@ router.get('/profilefound', (req, res) => {
   res.send('data fond')
 })
 
-function forwardAuthenticated(req, res, next) {
-  if (!req.isAuthenticated()) {
+function logedIn(req, res, next) {
+  if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/');
+  res.redirect('/signin');
+
 }
+
+
+module.exports = router;

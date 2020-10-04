@@ -1,0 +1,33 @@
+<form action="/admin/category/{{data._id}}" method="POST" class="form-horizontal" enctype="multipart/form-data" >
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Category</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Category Name">Category Name</label>  
+  <div class="col-md-4">
+  <input id="Category Name" name="name" value="{{data.name}}" type="text" placeholder="Category Name" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- File Button --> 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Category Image">Category Image</label>
+  <div class="col-md-4">
+      <img width="50" height="50" src="/uploads/{{data.image}}">
+    <input id="Category Image" value="{{data.image}}" name="file"  type="file">
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <div class="col-md-4">
+    <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Save Changes</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
