@@ -28,11 +28,11 @@
 				<!-- Logo -->
                   <div class="header-left">
                     <a href="/" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;    border-radius: 84%;
     padding-bottom: 24px;" alt="Logo">
 					</a>
 					<a href="/" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;    border-radius: 84%;" alt="Logo" width="70" height="70">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -72,7 +72,7 @@
 									
 								</div>
 								<div class="user-text">
-									<h6>{{docs.name}}</h6>
+									<h6 style="text-transform: capitalize;">{{docs.name}}</h6>
 									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
@@ -92,12 +92,12 @@
 			
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="index.html" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="    border-radius: 84%;max-height: 115px;
     padding-bottom: 24px;" alt="Logo">
 					</a>
 					<a href="index.html" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+						<img src="/assets/img/estoreSmalllogo.png" style="    border-radius: 84%;max-height: 70px;" alt="Logo" width="70" height="70">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -190,7 +190,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Welcome </h3>
+								<h5 style="text-transform: capitalize;color:#48454575;x;" class="page-title">Hello {{docs.name}}</h5>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item active"></li>
 								</ul>
@@ -204,7 +204,7 @@
 							<!-- Recent Orders -->
 								<div class="row">
 			<div class="col-md-12">
-				<h2>Products <b>Category</b></h2>
+				<h4 style="color:cadetblue;">Products <b>Category</b></h4>
 				<hr>
 
 				<!-- Carousel indicators -->
@@ -233,20 +233,20 @@
 						</div>
 					</div>
 				</div>
-
+<hr>
 				{{!-- cards --}}
 				<div class="row" style="position: relative;    max-height:0px ;!important">
 	{{#each result}}
 
 	<div style="width: 12px;" class="col-12 col-md-3">
 		<div class="thumbnail">
-			<div class="card">
+			<a href="/users/product/{{this._id}}"><div class="card">
 
 				<img src="uploads/{{this.image}}" alt="..." class="img-responsive" height="200" width="200">
-				<p style="text-transform: uppercase;">{{this.itemName}}</p>
-				<h5 style="text-transform: uppercase;">Category: {{this.category}}</h5>
-				<a href="/users/product/{{this._id}}" class="genric-btn primary-border radius"><button>view</button></a>
-			</div>
+				<p style="text-transform: capitalize;color: #00000070">{{this.itemName}}</p>
+				<h5 style="text-transform: capitalize; color: #00000070">{{this.category}}</h5>
+				<a href="/users/product/{{this._id}}" class="genric-btn primary-border radius"><button class="btn btn-primary" >view</button></a>
+			</div></a>
 		</div>
 	</div>
 	{{/each}}

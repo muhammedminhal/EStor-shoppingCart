@@ -12,17 +12,20 @@ var flash = require('connect-flash')
 
 /* GET home page. */
 router
-.get('/', async function(req, res, next) {
-  let token = req.cookies.accessToken
-   var userEmail = req.cookies.userData;
-  jwt.verify(token,"secret",async(err,decode)=>{
-    if(err){
-   
+.get('/', async function(req, res) {
+  var userEmail = req.cookies.userData;
+  console.log("cookie",userEmail)
+
       try{
         const database =req.app.locals.db;
         const collection = database.collection('products')
         const Category = database.collection('category')
-        const findProduct = await collection.find({})
+        const users = database.collection('user')
+        var email ={"email":userEmail}
+        await users.findOne(email,async(err,docs)=>{
+          console.log("Documen",docs,err)
+          if(docs){
+            const findProduct = await collection.find({})
         const categoryProject = await Category.find({})
         const result =[]
         const Data =[]
@@ -32,20 +35,8 @@ router
         await findProduct.forEach(docs => {
         result.push(docs)
         })
-        res.render('users/index', { result:result,Data:Data ,login:false});
-      }
-      catch(err){
-        throw err
-      }
-    }else{
-      var userEmail = req.cookies.userData;
-      try{
-        const database =req.app.locals.db;
-        const collection = database.collection('products')
-        const Category = database.collection('category')
-        const users = database.collection('users')
-        await users.findOne(userEmail,async(err,docs)=>{
-          if(!err){
+        res.render('users/index', { result:result,docs:docs ,Data:Data,login:true});
+          }else{
             const findProduct = await collection.find({})
             const categoryProject = await Category.find({})
             const result =[]
@@ -56,19 +47,16 @@ router
             await findProduct.forEach(docs => {
             result.push(docs)
             })
-            res.render('users/index', { result:result,Data:Data ,docs:docs,login:true});
+            res.render('users/index', { result:result ,Data:Data,login:false});
           }
-        })
-
-      
+        })       
       }
       catch(err){
         throw err
       }
-    }
   })
   
-})
+
 // index route=====================================================================================
 
 
@@ -176,12 +164,19 @@ res.render('partials/loginheader')
 }
 );
 
+router.get('https://accounts.google.com/Logout?hl=en-GB&continue=https://www.google.com%3Fhl%3Den-GB&timeStmp=1601904033&secTok=.AG5fkS-IsXMYhSvQM3kapinYIK4sGJbX4g',(req,res)=>{
+
+ 
+})
 
 // logout ==========================================================================================================================
 router.get('/logout',async(req,res)=>{
   req.logout()
   req.session.destroy()
   res.clearCookie("accessToken");
+  res.clearCookie("userData");
+ 
+ 
   
   try{
     const database =req.app.locals.db;
@@ -205,8 +200,6 @@ router.get('/logout',async(req,res)=>{
     throw err
   }
 })
-
-
 
 
 

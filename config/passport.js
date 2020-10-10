@@ -55,7 +55,7 @@ passport.use(stategy);
 
 
 const googleStategy = (new Strategy({
-  clientID:'171396708837-mls44huqgu9cu79rofdbfou1q11iqdcr.apps.googleusercontent.com',
+  clientID:"171396708837-mls44huqgu9cu79rofdbfou1q11iqdcr.apps.googleusercontent.com",
   clientSecret:"Ocl69bumYrREEE-p4hjjDBme",
   callbackURL:'http://localhost:3000/auth/google/callback'
 },

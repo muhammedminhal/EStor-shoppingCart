@@ -261,18 +261,24 @@
   </div>
 </div>
 <hr>
-<img src="/uploads/{{data.image}}" width="50" height="50" alt="">
+ <canvas id= "canv1" style="  height: 85px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;    margin-left: 130px;" >Image</canvas>
+  <div class="col-md-4">
+	  <hr>
+<img src="/uploads/{{data.image}}" id="img" width="50" height="50" alt="">
 <!-- File Button --> 
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">File Button</label>
   <div class="col-md-4">
-    <input id="filebutton" name="file" value="{{data.image}}" class="input-file" type="file">
+    <input id="finput" name="file"  onchange="upload()" value="{{data.image}}" class="input-file" type="file">
   </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
+ 
   <div class="col-md-4">
     <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Save Changes</button>
   </div>
@@ -299,7 +305,23 @@
 		
         </div>
 		<!-- /Main Wrapper -->
-	
+	<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+
+
+<script>
+document.getElementById("finput").addEventListener('change',function(){
+	document.getElementById('img').style.display ="none"
+})
+
+
+	function upload(){
+  var imgcanvas = document.getElementById("canv1");
+  var fileinput = document.getElementById("finput");
+  var image = new SimpleImage(fileinput);
+  image.drawTo(imgcanvas);
+}
+</script>
 
 		<!-- jQuery -->
         <script src="/assets/js/jquery-3.2.1.min.js"></script>

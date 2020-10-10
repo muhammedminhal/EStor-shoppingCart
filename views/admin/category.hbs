@@ -1,7 +1,5 @@
 
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+ <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
@@ -16,21 +14,24 @@
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="/assets/css/style.css">
+		
 	
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
 			<!-- Header -->
-            <div class="header">
+       	{{#if login}}
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
 			
 				<!-- Logo -->
-                <div class="header-left">
-                    <a href="index.html" class="logo">
-						<img src="/assets/img/logo.png" alt="Logo">
+                  <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
 					</a>
-					<a href="index.html" class="logo logo-small">
-						<img src="/assets/img/logo-small.png" alt="Logo" width="30" height="30">
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -38,6 +39,78 @@
 				<a href="javascript:void(0);" id="toggle_btn">
 					<i class="fe fe-text-align-left"></i>
 				</a>
+				
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									
+								</div>
+								<div class="user-text">
+									<h6>Ryan Taylor</h6>
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="users/profile">My Profile</a>
+							<a class="dropdown-item" href="/users/logout">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+{{else}}
+<!-- Header -->
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
 				
 		
 				<!-- Mobile Menu Toggle -->
@@ -56,20 +129,18 @@
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img class="rounded-circle" src="/assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+							
 						</a>
 						<div class="dropdown-menu">
 							<div class="user-header">
-								<div class="avatar avatar-sm">
-									<img src="/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
-								</div>
+							
 								<div class="user-text">
-									<h6>Ryan Taylor</h6>
-									<p class="text-muted mb-0">Administrator</p>
+							
+									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="profile.html">My Profile</a>
-							<a class="dropdown-item" href="login.html">Logout</a>
+							<a class="dropdown-item" href="/signin">SignIn</a>
+							<a class="dropdown-item" href="/signup">SignUp</a>
 						</div>
 					</li>
 					<!-- /User Menu -->
@@ -78,35 +149,31 @@
 				<!-- /Header Right Menu -->
 				
             </div>
+{{/if}}
+		
+			
 			<!-- /Header -->
 			
 			<!-- Sidebar -->
-            <div class="sidebar" id="sidebar">
+            <div class="sidebar" style="    background-color:#ffffff8c;"  id="sidebar">
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
 							<li class="menu-title"> 
-								<span>Main</span>
+								<span style="color: #000;">Main</span>
 							</li>
-							<li class=""> 
-								<a href="/admin/Profile"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							<li > 
+								<a style="color: #000;" href="/admin/profile"><i class="fe fe-home"></i> <span>Dahboard</span></a>
 							</li>
-							<li> 
-								<a href="/admin/Products"><i class="fe fe-layout"></i> <span>Products</span></a>
+							<li>
+								<a style="color: #000;" href="/admin/Users"><i class="fe fe-layout"></i> <span>Users</span></a>
 							</li>
-							<li> 
-								<a href="/admin/Users"><i class="fe fe-users"></i> <span>Users</span></a>
-							</li>
-							<li> 
-								<a href="doctor-list.html"><i class="fe fe-user-plus"></i> <span>Category</span></a>
+							<li>
+								<a style="color: #000;" href="/admin/products"><i class="fe fe-layout"></i> <span>prodcts</span></a>
 							</li>
 							<li> 
-								<a href="patient-list.html"><i class="fe fe-user"></i> <span>Banners</span></a>
-							</li>
-							
-							
-							
-								
+								<a style="color: #000;" href="/admin/category"><i class="fe fe-users"></i> <span>category</span></a>
+							</li>	
 								</ul>
 		
 						
@@ -116,10 +183,23 @@
 			<!-- /Sidebar -->
 			
 			<!-- Page Wrapper -->
-         
-			<!-- /Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+
+					<!-- /Page Header -->			
+						
+							<!-- Recent Orders -->
+								<div class="row">
+			<div class="col-md-12">
 		
-    <div class="page-wrapper">
+
+				<!-- Carousel indicators -->
+
+				<!-- Wrapper for carousel items -->
+
+				{{!-- cards --}}
                 <div class="content container-fluid">
 				
 					<!-- Page Header -->
@@ -206,6 +286,73 @@
 						</div>
 					</div>
 				</div>			
+
+{{!-- cards --}}
+			</div>
+			<!-- Carousel controls -->
+
+		</div>
+							<!-- /Feed Activity -->
+							
+						</div>
+					</div>
+				
+						</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+	
+
+<style>
+	.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 108%;
+    margin: 47px;
+    padding: 10px;
+    height: 50%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 65px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.thumbnail {
+		padding: 2px 16px;
+		border: none !important
+	}
+</style>
+
+		<!-- jQuery -->
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="/assets/plugins/morris/morris.min.js"></script>  
+		<script src="/assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/assets/js/script.js"></script>
+
+
+
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+         
+			<!-- /Page Wrapper -->
+		
+    <div class="page-wrapper">
+
                 <!-- Delete Modal -->
 	
 

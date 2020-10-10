@@ -15,7 +15,7 @@ const { jwtMiddleware } = require('../config/jwt');
 var Storage = multer.diskStorage({
   destination: "./public/uploads/",
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    cb(null,objectId()+"-"+ file.originalname)
   }
 })
 
@@ -30,6 +30,7 @@ var upload = multer({
 router
   .get('/upload',logedIn, async (req, res) => {
     let token = req.cookies.accessToken
+    console.log(token)
     jwt.verify(token, 'secret', async (err, paylod) => {
       if (err) {
         const database = req.app.locals.db;
@@ -53,7 +54,8 @@ router
     })
   })
   // seller mode post=============================================================
-  .post('/upload',logedIn, upload, async (req, res) => {
+  .post('/upload', async (req, res) => {
+    console.log('reqfile',req.file)
     let token = req.cookies.accessToken
     console.log(token)
     jwt.verify(token, "secret", async (err, decode) => {
@@ -63,10 +65,9 @@ router
         res.status(401)
         res.render('users/signin', { msg: "You are not an Autherised user please sign in" })
       } else {
-        const imageName = req.file.filename
-        const success = req.file.filename + "file uploaded successfully"
+        const imageName = req.body.image
+      console.log('photo',imageName)
         res.redirect("/users/sellerview")
-
         try {
           var userEmail = req.cookies.userData;
           const email = { "email": userEmail }
@@ -98,35 +99,90 @@ router
     })
   })
 
+  router
+  .post('/fileupload',(req,res)=>{
+    console.log("mass")
+    
+		upload(req, res, async function(err) {
+			if (!req.file) {
+        console.log("No file")
+				return { status: 'failed', message: 'No image to upload' };
+			}
+			if (err instanceof multer.MulterError) {
+        console.log("No file")
+				return res.status(500).json(err);
+			} else if (err) {
+        console.log("No file")
+
+				return res.status(500).json(err);
+      }
+      
+      res.send(req.file.filename)
+      console.log(req.file.filename);  
+    })
+
+
+  })
+
+  
 /* GET users listing. seller form  END=================================================================================== */
 
 /* GET users listing. seller myFUll products  start============================================================ */
 
 router
   .get("/sellerview",logedIn, async (req, res) => {
+    let token = req.cookies.accessToken
     var userEmail = req.cookies.userData;
     const email = { "email": userEmail }
-    try {
-      const db = req.app.locals.db
-      await db.collection('user').findOne(email,async(err,data)=>{
-        if(err){
-console.log('err')
-        }else{
-          var userData = data._id
-          const database = req.app.locals.db;
-          const collection = database.collection('products')
-          const findProduct = await collection.find({"userdata":userData})
-          const result = []
-          await findProduct.forEach(docs => {
-            result.push(docs)
+    jwt.verify(token, "secret", async (err, decode) => {
+      if(err){
+        try {
+          const db = req.app.locals.db
+          await db.collection('user').findOne(email,async(err,data)=>{
+            if(err){
+    console.log('err')
+            }else{
+              var userData = data._id
+              const database = req.app.locals.db;
+              const collection = database.collection('products')
+              const findProduct = await collection.find({"userdata":userData})
+              const result = []
+              await findProduct.forEach(docs => {
+                result.push(docs)
+              })
+              res.render('users/sellerView', { docs: result, login: false })
+            }
           })
-          res.render('users/sellerView', { docs: result, login: true })
         }
-      })
-    }
-    catch (err) {
-      throw err
-    }
+        catch (err) {
+          throw err
+        }
+      }else{
+        try {
+          const db = req.app.locals.db
+          await db.collection('user').findOne(email,async(err,data)=>{
+            if(err){
+    console.log('err')
+            }else{
+              var userData = data._id
+              const database = req.app.locals.db;
+              const collection = database.collection('products')
+              const findProduct = await collection.find({"userdata":userData})
+              const result = []
+              await findProduct.forEach(docs => {
+                result.push(docs)
+              })
+              res.render('users/sellerView', { docs: result, login: true })
+            }
+          })
+        }
+        catch (err) {
+          throw err
+        }
+      }
+      
+    });
+    
   })
 
 router
@@ -367,47 +423,110 @@ router.get('/profile', async (req, res) => {
       })
     }
   })
+})
+
+
+
+
+router.post('/profile', async(req,res)=>{
+  let userEmail = req.cookies.userData
+  console.log(userEmail)
+  const email = { "email": userEmail }
+  const updateProduct = {
+    $set: {
+
+     mobile:req.body.mobile,
+     address:req.body.address,
+    }
+  };
  
+  try {
+    const database = req.app.locals.db;
+    const collection = database.collection('user')
+    await collection.updateOne(email, updateProduct)
+    console.log(updateProduct, "edit par", userEmail)
+    res.redirect("/")
+  }
+  catch (err) {
+    throw err
+  }
 })
 
 
 
 
-// router.post('/editprofile', async(req,res)=>{
-//   let userData = req.cookies.userdata
-//   const updateProduct = {
-//     $set: {
-
-//      phone:req.body.phone,
-//      about:req.body.about,
-//     }
-//   };
-//   const option = { upsert: false }
-//   try {
-//     const database = req.app.locals.db;
-//     const collection = database.collection('users')
-//     await collection.updateOne(userData, updateProduct, option)
-//     console.log(updateProduct, "edit par", userData)
-//     res.redirect("/users/profilefound")
-//   }
-//   catch (err) {
-//     throw err
-//   }
-// })
-
-
-
-router.get('/profilefound', (req, res) => {
-  res.send('data fond')
+router.get('/editprofile', async (req, res) => {
+  let token = req.cookies.accessToken
+  jwt.verify(token,'secret',async(err,decode)=>{
+    if(err){
+      var userEmail = req.cookies.userData;
+      const email = { "email": userEmail }
+      const db = req.app.locals.db
+      await db.collection('user').findOne(email, async (err, docs) => {
+        console.log("profile", docs)
+        if (err) {
+          console.log(err)
+          res.status(500)
+        } else {
+          res.render('users/editprofile',{ docs: docs ,login:false})
+        
+        }
+      })
+    }else{
+      var userEmail = req.cookies.userData;
+      const email = { "email": userEmail }
+      const db = req.app.locals.db
+      await db.collection('user').findOne(email, async (err, docs) => {
+        console.log("profile", docs)
+        if (err) {
+          console.log(err)
+          res.status(500)
+        } else {
+          res.render('users/editprofile',{ docs: docs ,login:true})
+        }
+      })
+    }
+  })
 })
+
+
+
+router.post('/editprofile', async(req,res)=>{
+  let userEmail = req.cookies.userData
+  console.log(userEmail)
+  const email = { "email": userEmail }
+
+  const updateProduct = {
+    $set: {
+    name:req.body.name,
+    email:req.body.email,
+     mobile:req.body.mobile,
+     address:req.body.address,
+    }
+  };
+ 
+  try {
+    const database = req.app.locals.db;
+    const collection = database.collection('user')
+    await collection.updateOne(email, updateProduct)
+    console.log(updateProduct, "edit par", userEmail)
+    res.redirect("/users/profile")
+  }
+  catch (err) {
+    throw err
+  }
+})
+
+
 
 function logedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/signin');
-
 }
+
+
 
 
 module.exports = router;
