@@ -75,8 +75,8 @@
 									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="users/profile">My Profile</a>
-							<a class="dropdown-item" href="/users/logout">Logout</a>
+							<a class="dropdown-item" href="/admin/profile">My Profile</a>
+							<a class="dropdown-item" href="/admin/logout">Logout</a>
 						</div>
 					</li>
 					<!-- /User Menu -->
@@ -139,8 +139,8 @@
 									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="/signin">SignIn</a>
-							<a class="dropdown-item" href="/signup">SignUp</a>
+							<a class="dropdown-item" href="/admin/signin">SignIn</a>
+					
 						</div>
 					</li>
 					<!-- /User Menu -->
@@ -183,7 +183,7 @@
 			<!-- /Sidebar -->
 			
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+            <div class="page-wrapper"    style="    padding-right: 132px;">
 			
                 <div class="content container-fluid">
 					
@@ -212,9 +212,7 @@
 									<li class="breadcrumb-item active">Category</li>
 								</ul>
 							</div>
-							<div class="col-sm-5 col">
-								<a href="/admin/categoryform"  class="btn btn-primary float-right mt-2">Add Category</a>
-							</div>
+							
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -223,10 +221,13 @@
 						<div class="col-md-12">
 						
 							<!-- Recent Orders -->
-									<div class="card card-table flex-fill">
+									<div class="card card-table flex-fill" style="height: inherit;">
 								<div class="card-header">
 									<h4 class="card-title">Category</h4>
 								</div>
+								<div class="col-sm-5 col" style="max-width: none;">
+								<a href="/admin/categoryform"  class="btn btn-primary float-right mt-2">Add Category</a>
+							</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-hover table-center mb-0">
@@ -248,9 +249,7 @@
     <td><img width="30" height="30" src="/uploads/{{this.image}}"></td>
 
                 <td>{{this._id}}</td>
-
 													<td >
-														
 															<a class="btn btn-sm bg-success-light" href="/admin/category/{{this._id}}">
 																<i class="fe fe-pencil"></i> Edit
 															</a>
@@ -351,7 +350,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
          
 			<!-- /Page Wrapper -->
 		
-    <div class="page-wrapper">
+    <div class="page-wrapper" >
 
                 <!-- Delete Modal -->
 	

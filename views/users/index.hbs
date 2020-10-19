@@ -64,19 +64,20 @@
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						
+						<img src="/uploads/{{docs.image}}" width="30" height="30" style="border-radius: 30px;" >
+
 						</a>
 						<div class="dropdown-menu">
 							<div class="user-header">
-								<div class="avatar avatar-sm">
-									
-								</div>
+								
+									<img src="/uploads/{{docs.image}}" width="50" height="50" style="border-radius: 30px;" >
+							
 								<div class="user-text">
-									<h6 style="text-transform: capitalize;">{{docs.name}}</h6>
+									<a href="/users/profile"><h6 style="text-transform: capitalize;">{{docs.name}}</h6></a>
 									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
-							<a class="dropdown-item" href="users/profile">My Profile</a>
+							<a class="dropdown-item" href="/users/profile">My Profile</a>
 							<a class="dropdown-item" href="/logout">Logout</a>
 						</div>
 					</li>
@@ -168,7 +169,7 @@
 								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
 							</li>
 							<li> 
-								<a style="color: #000;"  href=""><i class="fe fe-layout"></i> <span>Chat</span></a>
+								<a style="color: #000;"  href="/users/notification"><i class="fe fe-layout"></i> <span>Chat</span></a>
 							</li>
 							<li> 
 								<a style="color: #000;"  href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
@@ -182,7 +183,7 @@
 			<!-- /Sidebar -->
 			
 			<!-- Page Wrapper -->
-            <div class="page-wrapper">
+            <div class="page-wrapper" style="    margin-right: 34px;">
 			
                 <div class="content container-fluid">
 					
@@ -526,6 +527,10 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	}
 </style>
 
+
+
+
+
 		<!-- jQuery -->
         <script src="/assets/js/jquery-3.2.1.min.js"></script>
 		
@@ -543,5 +548,3 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 		<!-- Custom JS -->
 		<script  src="/assets/js/script.js"></script>
 
-
-<!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->

@@ -1,14 +1,7 @@
-   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
 
-
-
-{{!-- new --}}
-
-
- <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
@@ -28,19 +21,18 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		
-			<!-- Header -->
-       		{{#if login}}
-            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+
+			{{#if login}}
+            <div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
 			
 				<!-- Logo -->
                   <div class="header-left">
                     <a href="/" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;    border-radius: 84%;
     padding-bottom: 24px;" alt="Logo">
 					</a>
 					<a href="/" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;    border-radius: 84%;" alt="Logo" width="70" height="70">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -72,15 +64,16 @@
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						
+						<img src="/uploads/{{data.image}}" width="30" height="30" style="border-radius: 30px;" >
+
 						</a>
 						<div class="dropdown-menu">
 							<div class="user-header">
-								<div class="avatar avatar-sm">
-									
-								</div>
+								
+									<img src="/uploads/{{data.image}}" width="50" height="50" style="border-radius: 30px;" >
+							
 								<div class="user-text">
-									<h6>Ryan Taylor</h6>
+									<a href="/users/profile"><h6 style="text-transform: capitalize;">{{data.name}}</h6></a>
 									<p class="text-muted mb-0">User</p>
 								</div>
 							</div>
@@ -101,11 +94,11 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="/" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+						<img src="/assets/img/Estorelogo.png" style="    border-radius: 84%;max-height: 115px;
     padding-bottom: 24px;" alt="Logo">
 					</a>
-					<a href="/" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					<a href="index.html" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="    border-radius: 84%;max-height: 70px;" alt="Logo" width="70" height="70">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -144,6 +137,7 @@
 							<div class="user-header">
 							
 								<div class="user-text">
+									
 							
 									<p class="text-muted mb-0">User</p>
 								</div>
@@ -159,24 +153,26 @@
 				
             </div>
 {{/if}}
+		
+			
 			<!-- /Header -->
 			
 			<!-- Sidebar -->
-            <div class="sidebar" style="    background-color:#ffffff8c;"  id="sidebar">
+            <div class="sidebar" style="    background-color:#ffffff8c;" id="sidebar">
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
 							<li class="menu-title"> 
-								<span style="color: #000;">Main</span>
+								<span style="color: #000;" >Main</span>
 							</li>
 							<li > 
 								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
 							</li>
 							<li> 
-								<a style="color: #000;" href=""><i class="fe fe-layout"></i> <span>Chat</span></a>
+								<a style="color: #000;"  href="/users/notification"><i class="fe fe-layout"></i> <span>Chat</span></a>
 							</li>
 							<li> 
-								<a style="color: #000;" href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
+								<a style="color: #000;"  href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
 							</li>	
 								</ul>
 		
@@ -242,9 +238,9 @@
 				    	<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
 				  	</li>
 				  	<li class="nav-item">
-				    	<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
+				    	<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false"></a>
 				  	</li>
-				</ul>
+										</ul>
 				<div class="tab-content" id="myTabContent">
 				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 				  	<p style="text-transform: uppercase;">{{docs.Description}}</p>

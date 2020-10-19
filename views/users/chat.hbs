@@ -1,0 +1,439 @@
+
+
+ <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+		
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="/assets/css/feathericon.min.css">
+		
+		<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+		
+	
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+       	{{#if login}}
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                  <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+				
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+						
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									
+								</div>
+								<div class="user-text">
+									<h6>Ryan Taylor</h6>
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="users/profile">My Profile</a>
+							<a class="dropdown-item" href="/users/logout">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+{{else}}
+<!-- Header -->
+            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="/" class="logo">
+						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+					</a>
+					<a href="/" class="logo logo-small">
+						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+					<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+				
+		
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+				
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+					<!-- Notifications -->
+			
+					<!-- /Notifications -->
+					
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+							
+								<div class="user-text">
+							
+									<p class="text-muted mb-0">User</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="/signin">SignIn</a>
+							<a class="dropdown-item" href="/signup">SignUp</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+					
+				</ul>
+				<!-- /Header Right Menu -->
+				
+            </div>
+{{/if}}
+		
+			
+			<!-- /Header -->
+			
+			<!-- Sidebar -->
+            <div class="sidebar" style="    background-color:#ffffff8c;"  id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title"> 
+								<span style="color: #000;">Main</span>
+							</li>
+							<li > 
+								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;" href="/users/notification"><i class="fe fe-layout"></i> <span>Chat</span></a>
+							</li>
+							<li> 
+								<a style="color: #000;" href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
+							</li>	
+								</ul>
+		
+						
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+                <div class="content container-fluid">
+					
+
+					<!-- /Page Header -->			
+						
+							<!-- Recent Orders -->
+								<div class="row">
+			<div class="col-md-12">
+		
+
+				<!-- Carousel indicators -->
+
+				<!-- Wrapper for carousel items -->
+
+				{{!-- cards --}}
+	 <section class="chat_section" >
+        <div class="brand" >
+      <h1>CHAT</h1>
+      <input type="hidden" id="name" value="{{data.name}}">
+      <input type="hidden" id="uEmail" value="{{data.uEmail}}">
+
+      <input type="hidden" id="email" value="{{docs.email}}">
+
+
+        </div>
+        <div class="message_area">
+          
+
+        </div>
+
+           <div>
+               <textarea id="textarea"  cols="30" rows="1" placeholder="write a message" ></textarea>
+           </div>
+
+
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+
+
+{{!-- cards --}}
+			</div>
+			<!-- Carousel controls -->
+
+		</div>
+							<!-- /Feed Activity -->
+							
+						</div>
+					</div>
+				
+						</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+		
+        </div>
+		<!-- /Main Wrapper -->
+	
+
+<style>
+	.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 108%;
+    margin: 47px;
+    padding: 10px;
+    height: 50%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 65px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.thumbnail {
+		padding: 2px 16px;
+		border: none !important
+	}
+</style>
+
+		<!-- jQuery -->
+        <script src="/assets/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		
+		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
+		<script src="/assets/plugins/morris/morris.min.js"></script>  
+		<script src="/assets/js/chart.morris.js"></script>
+		
+		<!-- Custom JS -->
+		<script  src="/assets/js/script.js"></script>
+
+
+
+
+   
+
+<script>
+
+
+let name = document.getElementById('name').value
+let email = document.getElementById('uEmail').value
+console.log(email)
+
+var socket = io()
+
+var textarea =document.getElementById('textarea');
+var messageArea = document.querySelector('.message_area')
+
+
+
+
+textarea.addEventListener('keyup',(e)=>{
+    if(e.key ==='Enter'){
+        sendMessage(e.target.value)
+    }
+})
+// 
+
+function sendMessage(message){
+    let msg={
+        user:email,
+        message:message.trim()
+    }
+    appendMessage(msg,'outgoing')
+    textarea.value=''
+    messageScroll()
+
+     socket.emit('message',msg)
+}
+
+
+function appendMessage(msg,type){
+
+let mainDiv = document.createElement('div');
+
+let className = type
+
+mainDiv.classList.add(className,'message')
+
+let markup=`
+
+<h4> ${msg.user}<h4>
+<p>${msg.message}<p>
+
+`
+mainDiv.innerHTML =markup
+messageArea.appendChild(mainDiv)
+}
+
+
+socket.on('message',(msg)=>{
+  appendMessage(msg,'incoming')              
+     messageScroll()
+})
+
+function messageScroll(){
+    messageArea.scrollTop =messageArea.scrollHeight
+}
+</script>
+
+
+    
+<style>
+    *{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background :#F8F8F8;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section.chat_section{
+width: 800px;
+max-width: 90%;
+background: #fff;
+box-shadow: 0 10px 15px -3px rgba(0, -0, -0, -0.1),0 4px 6px -2px rgba(0, -0, -0, -0.05);
+}
+
+.brand{
+    padding: 20px;
+    background: seashell;
+    display: flex;
+    align-items: center;
+}
+
+.brand h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #444;
+    margin-left: 10px;
+
+}
+
+
+.message_area{
+    height: 500px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 40px;
+}
+
+textarea{
+    width: 100%;
+    border: none;
+    padding: 20px;
+    font-size: 16px;
+    outline: none;
+    background:#FBFBFB;
+}
+
+
+.message{
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    max-width: 300;
+    position: relative;
+}
+
+.incoming{
+    background: #8f8be8;
+    color: #fff;
+    margin-right: auto;
+}
+.outgoing{
+    background: #e9eafd;
+    color: #787986;
+    margin-left: auto;
+}
+
+
+.message h4{
+    position: relative;
+    top: -20px;
+    left: 0;
+    color: #333;
+    font-size: 14px;
+}
+
+</style>
