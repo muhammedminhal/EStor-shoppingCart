@@ -1,430 +1,559 @@
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
 
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-		
-		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-		
-		<!-- Feathericon CSS -->
-        <link rel="stylesheet" href="/assets/css/feathericon.min.css">
-		
-		<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
-		
-		<!-- Main CSS -->
-        <link rel="stylesheet" href="/assets/css/style.css">
-		
-	
-	
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
-			{{#if login}}
-            <div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
-			
-				<!-- Logo -->
-                  <div class="header-left">
-                    <a href="/" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="max-height: 115px;    border-radius: 84%;
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+<!-- Feathericon CSS -->
+<link rel="stylesheet" href="/assets/css/feathericon.min.css">
+
+<link rel="stylesheet" href="/assets/plugins/morris/morris.css">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+
+
+
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	{{#if login}}
+	<div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+
+		<!-- Logo -->
+		<div class="header-left">
+			<a href="/" class="logo">
+				<img src="/assets/img/Estorelogo.png" style="max-height: 115px;    border-radius: 84%;
     padding-bottom: 24px;" alt="Logo">
-					</a>
-					<a href="/" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;    border-radius: 84%;" alt="Logo" width="70" height="70">
-					</a>
-                </div>
-				<!-- /Logo -->
-				
-				<a href="javascript:void(0);" id="toggle_btn">
-					<i class="fe fe-text-align-left"></i>
-				</a>
-				
-					<div class="top-nav-search">
-					<form>
-						<input type="text" class="form-control" placeholder="Search here">
-						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-					</form>
-				</div>
-		
-				<!-- Mobile Menu Toggle -->
-				<a class="mobile_btn" id="mobile_btn">
-					<i class="fa fa-bars"></i>
-				</a>
-				<!-- /Mobile Menu Toggle -->
-				
-				<!-- Header Right Menu -->
-				<ul class="nav user-menu">
-
-					<!-- Notifications -->
-			
-					<!-- /Notifications -->
-					
-					<!-- User Menu -->
-					<li class="nav-item dropdown has-arrow">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						<img src="/uploads/{{user.image}}" width="30" height="30" style="border-radius: 30px;" >
-
-						</a>
-						<div class="dropdown-menu">
-							<div class="user-header">
-								
-									<img src="/uploads/{{user.image}}" width="50" height="50" style="border-radius: 30px;" >
-							
-								<div class="user-text">
-									<a href="/users/profile"><h6 style="text-transform: capitalize;">{{user.name}}</h6></a>
-									<p class="text-muted mb-0">User</p>
-								</div>
-							</div>
-							<a class="dropdown-item" href="/users/profile">My Profile</a>
-							<a class="dropdown-item" href="/logout">Logout</a>
-						</div>
-					</li>
-					<!-- /User Menu -->
-					
-				</ul>
-				<!-- /Header Right Menu -->
-				
-            </div>
-{{else}}
-<!-- Header -->
-            <div class="header"  style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
-			
-				<!-- Logo -->
-                <div class="header-left">
-                    <a href="/" class="logo">
-						<img src="/assets/img/Estorelogo.png" style="    border-radius: 84%;max-height: 115px;
-    padding-bottom: 24px;" alt="Logo">
-					</a>
-					<a href="index.html" class="logo logo-small">
-						<img src="/assets/img/estoreSmalllogo.png" style="    border-radius: 84%;max-height: 70px;" alt="Logo" width="70" height="70">
-					</a>
-                </div>
-				<!-- /Logo -->
-				
-				<a href="javascript:void(0);" id="toggle_btn">
-					<i class="fe fe-text-align-left"></i>
-				</a>
-
-					<div class="top-nav-search">
-					<form>
-						<input type="text" class="form-control" placeholder="Search here">
-						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-					</form>
-				</div>
-				
-		
-				<!-- Mobile Menu Toggle -->
-				<a class="mobile_btn" id="mobile_btn">
-					<i class="fa fa-bars"></i>
-				</a>
-				<!-- /Mobile Menu Toggle -->
-				
-				<!-- Header Right Menu -->
-				<ul class="nav user-menu">
-
-					<!-- Notifications -->
-			
-					<!-- /Notifications -->
-					
-					<!-- User Menu -->
-					<li class="nav-item dropdown has-arrow">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							
-						</a>
-						<div class="dropdown-menu">
-							<div class="user-header">
-							
-								<div class="user-text">
-									
-							
-									<p class="text-muted mb-0">User</p>
-								</div>
-							</div>
-							<a class="dropdown-item" href="/signin">SignIn</a>
-							<a class="dropdown-item" href="/signup">SignUp</a>
-						</div>
-					</li>
-					<!-- /User Menu -->
-					
-				</ul>
-				<!-- /Header Right Menu -->
-				
-            </div>
-{{/if}}
-		
-			
-			<!-- /Header -->
-			
-			<!-- Sidebar -->
-            <div class="sidebar" style="    background-color:#ffffff8c;" id="sidebar">
-                <div class="sidebar-inner slimscroll">
-					<div id="sidebar-menu" class="sidebar-menu">
-						<ul>
-							<li class="menu-title"> 
-								<span style="color: #000;" >Main</span>
-							</li>
-							<li > 
-								<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller mode</span></a>
-							</li>
-							<li> 
-								<a style="color: #000;"  href="/users/notification"><i class="fe fe-layout"></i> <span>Chat</span></a>
-							</li>
-							<li> 
-								<a style="color: #000;"  href="/users/sellerview"><i class="fe fe-users"></i> <span>My Products</span></a>
-							</li>	
-								</ul>
-		
-						
-					</div>
-                </div>
-            </div>
-			<!-- /Sidebar -->
-			
-			<!-- Page Wrapper -->
-            <div class="page-wrapper">
-			
-                <div class="content container-fluid">
-					
-
-					<!-- /Page Header -->			
-						
-							<!-- Recent Orders -->
-								<div class="row">
-			<div class="col-md-12">
-		
-
-				<!-- Carousel indicators -->
-
-				<!-- Wrapper for carousel items -->
-				
-
-				{{!-- cards --}}
-
-	<div class="container">
-		<div class="heading-section">
-			<h2>Product Details</h2>
+			</a>
+			<a href="/" class="logo logo-small">
+				<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;    border-radius: 84%;" alt="Logo"
+					width="70" height="70">
+			</a>
 		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div id="slider" class="owl-carousel product-slider">
-				</div>
-				<div class="img-zoom-container">
-				<img class="d-block w-100" id="myimage" style="height: 290px" src="/uploads/{{docs.image}}" alt="First slide"><hr>
-				  <div id="myresult" class="img-zoom-result"></div><hr>
-				  </div>
-			</div>
-			<div class="col-md-6">
-				<div class="product-dtl">
-					<div class="product-info">
-						<div class="product-name" style="text-transform: uppercase;">NAME:{{docs.itemName}}</div>
+		<!-- /Logo -->
 
-						<div class="product-price-discount"><span style="text-transform: uppercase;"><p>CATEGORY:{{docs.category}}</p></span></div>
-					</div>
-					<p>POSTED ON:{{docs.Date}}</p>
-					<p>LOCATION:{{docs.location}}</p>
-				</div>
-				{{!-- new --}}
-				<div class="product-dtl">
-					<div class="product-info">
-						<div class="product-name" style="text-transform: uppercase;"><p>SELLER:{{data.name}}</p></div>
-						<p  >Email:{{data.email}}</p>
-					
-					</div>
-					<input type="hidden" id="semial" name="useremail" value="{{data.email}}">
+		<a href="javascript:void(0);" id="toggle_btn">
+			<i class="fe fe-text-align-left"></i>
+		</a>
 
-						<input type="hidden" id="emial" name="useremail" value="{{user.email}}">
-					<a  id="chatwithseller" class="round-black-btn">CHAT WITH SELLER</a>
-				</div>
-			</div>
+		<div class="top-nav-search">
+			<form>
+				<input type="text" class="form-control" placeholder="Search here">
+				<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+			</form>
 		</div>
-		{{!-- new --}}
-	</div>
-	<div class="product-info-tabs">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<li class="nav-item">
-				<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
-					aria-controls="description" aria-selected="true">Description</a>
+
+		<!-- Mobile Menu Toggle -->
+		<a class="mobile_btn" id="mobile_btn">
+			<i class="fa fa-bars"></i>
+		</a>
+		<!-- /Mobile Menu Toggle -->
+
+		<!-- Header Right Menu -->
+		<ul class="nav user-menu">
+
+			<!-- Notifications -->
+
+			<!-- /Notifications -->
+
+			<!-- User Menu -->
+			<li class="nav-item dropdown has-arrow">
+				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+					<img src="/uploads/{{user.image}}" width="30" height="30" style="border-radius: 30px;">
+
+				</a>
+				<div class="dropdown-menu">
+					<div class="user-header">
+
+						<img src="/uploads/{{user.image}}" width="50" height="50" style="border-radius: 30px;">
+
+						<div class="user-text">
+							<a href="/users/profile">
+								<h6 style="text-transform: capitalize;">{{user.name}}</h6>
+							</a>
+							<p class="text-muted mb-0">User</p>
+						</div>
+					</div>
+					<a class="dropdown-item" href="/users/profile">My Profile</a>
+					<a class="dropdown-item" href="/logout">Logout</a>
+				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					aria-selected="false"></a>
-			</li>
+			<!-- /User Menu -->
+
 		</ul>
-		<div class="tab-content" id="myTabContent">
-			<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-				{{docs.Description}}
+		<!-- /Header Right Menu -->
+
+	</div>
+	{{else}}
+	<!-- Header -->
+	<div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
+
+		<!-- Logo -->
+		<div class="header-left">
+			<a href="/" class="logo">
+				<img src="/assets/img/Estorelogo.png" style="    border-radius: 84%;max-height: 115px;
+    padding-bottom: 24px;" alt="Logo">
+			</a>
+			<a href="index.html" class="logo logo-small">
+				<img src="/assets/img/estoreSmalllogo.png" style="    border-radius: 84%;max-height: 70px;" alt="Logo"
+					width="70" height="70">
+			</a>
+		</div>
+		<!-- /Logo -->
+
+		<a href="javascript:void(0);" id="toggle_btn">
+			<i class="fe fe-text-align-left"></i>
+		</a>
+
+		<div class="top-nav-search">
+			<form>
+				<input type="text" class="form-control" placeholder="Search here">
+				<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+
+
+		<!-- Mobile Menu Toggle -->
+		<a class="mobile_btn" id="mobile_btn">
+			<i class="fa fa-bars"></i>
+		</a>
+		<!-- /Mobile Menu Toggle -->
+
+		<!-- Header Right Menu -->
+		<ul class="nav user-menu">
+
+			<!-- Notifications -->
+
+			<!-- /Notifications -->
+
+			<!-- User Menu -->
+			<li class="nav-item dropdown has-arrow">
+				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+
+				</a>
+				<div class="dropdown-menu">
+					<div class="user-header">
+
+						<div class="user-text">
+
+
+							<p class="text-muted mb-0">User</p>
+						</div>
+					</div>
+					<a class="dropdown-item" href="/signin">SignIn</a>
+					<a class="dropdown-item" href="/signup">SignUp</a>
+				</div>
+			</li>
+			<!-- /User Menu -->
+
+		</ul>
+		<!-- /Header Right Menu -->
+
+	</div>
+	{{/if}}
+
+
+	<!-- /Header -->
+
+	<!-- Sidebar -->
+	<div class="sidebar" style="    background-color:#ffffff8c;" id="sidebar">
+		<div class="sidebar-inner slimscroll">
+			<div id="sidebar-menu" class="sidebar-menu">
+				<ul>
+					<li class="menu-title">
+						<span style="color: #000;">Main</span>
+					</li>
+					<li>
+						<a style="color: #000;" href="/users/upload"><i class="fe fe-home"></i> <span>Seller
+								mode</span></a>
+					</li>
+					<li>
+						<a style="color: #000;" href="/users/notification"><i class="fe fe-layout"></i>
+							<span>Chat</span></a>
+					</li>
+					<li>
+						<a style="color: #000;" href="/users/sellerview"><i class="fe fe-users"></i> <span>My
+								Products</span></a>
+					</li>
+				</ul>
+
+
 			</div>
-		
+		</div>
+	</div>
+	<!-- /Sidebar -->
+
+	<!-- Page Wrapper -->
+	<div class="page-wrapper">
+
+		<div class="content container-fluid">
+
+
+			<!-- /Page Header -->
+
+			<!-- Recent Orders -->
+			<div class="row">
+				<div class="col-md-12">
+
+
+					<!-- Carousel indicators -->
+
+					<!-- Wrapper for carousel items -->
+
+
+					{{!-- cards --}}
+
+					<div class="container">
+						<div class="heading-section">
+							<h2>Product Details</h2>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div id="slider" class="owl-carousel product-slider">
+								</div>
+								<div class="img-zoom-container">
+									<img class="d-block w-100" id="myimage" style="height: 290px"
+										src="/uploads/{{docs.image}}" alt="First slide">
+									<hr>
+									<div id="myresult" class="img-zoom-result"></div>
+									<hr>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="product-dtl">
+									<div class="product-info">
+										<div class="product-name" style="text-transform: uppercase;">
+											NAME:{{docs.itemName}}</div>
+
+										<div class="product-price-discount"><span style="text-transform: uppercase;">
+												<p>CATEGORY:{{docs.category}}</p>
+											</span></div>
+									</div>
+									<p>POSTED ON:{{docs.Date}}</p>
+									<p>LOCATION:{{docs.location}}</p>
+								</div>
+								{{!-- new --}}
+								<div class="product-dtl">
+									<div class="product-info">
+										<div class="product-name" style="text-transform: uppercase;">
+											<p>SELLER:{{data.name}}</p>
+										</div>
+										<p>Email:{{data.email}}</p>
+
+									</div>
+									<input type="hidden" id="semial" name="useremail" value="{{data.email}}">
+
+									<input type="hidden" id="emial" name="useremail" value="{{user.email}}">
+									<a id="chatwithseller" class="round-black-btn">CHAT WITH SELLER</a>
+								</div>
+							</div>
+						</div>
+						{{!-- new --}}
+					</div>
+					<div class="product-info-tabs">
+						<ul class="nav nav-tabs" id="myTab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description"
+									role="tab" aria-controls="description" aria-selected="true">Description</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab"
+									aria-controls="review" aria-selected="false"></a>
+							</li>
+						</ul>
+						<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="description" role="tabpanel"
+								aria-labelledby="description-tab">
+								{{docs.Description}}
+							</div>
+
+						</div>
+					</div>
+
+
+
+					{{!-- cards --}}
+				</div>
+				<!-- Carousel controls -->
+
+			</div>
+			<!-- /Feed Activity -->
+
 		</div>
 	</div>
 
+</div>
+</div>
+</div>
+<!-- /Page Wrapper -->
+
+</div>
+<!-- /Main Wrapper -->
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script>
 
 
-{{!-- cards --}}
-			</div>
-			<!-- Carousel controls -->
+	var email = document.getElementById('emial').value;
+	var semail = document.getElementById('semial').value;
 
-		</div>
-							<!-- /Feed Activity -->
-							
-						</div>
-					</div>
-				
-						</div>
-				</div>			
-			</div>
-			<!-- /Page Wrapper -->
-		
-        </div>
-		<!-- /Main Wrapper -->
 
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-	<script>
+	document.location.href = "/users/chat"
 
-     
-		var email = document.getElementById('emial').value;
-     	var semail = document.getElementById('semial').value;
+	var body = {
+		uEmail: email,
+		sEmail: semail
+	}
 
-		document.getElementById('chatwithseller').addEventListener('click',function(){
-var socket = io()
-socket.emit('userRoom',email)
- 
+	axios({
+		method: 'post',
+		url: '/users/crate/warning',
+		data: body
+	})
+		.then(() => {
 
-document.location.href = "/users/chat"
-
-var body = {
-    uEmail: email,
-    sEmail: semail
-}
-
-axios({
-    method: 'post',
-    url: '/users/crate/warning',
-    data: body
-})
-.then( ()=> {
-    
-})
-.catch(function (error) {
-    console.log(error.response);
-});
-console.log(semail,email)
+		})
+		.catch(function (error) {
+			console.log(error.response);
+		});
+	console.log(semail, email)
 
 })
 
-	</script>
+</script>
+
+
 
 <style>
-* {box-sizing: border-box;}
+	* {
+		box-sizing: border-box;
+	}
 
-.img-zoom-container {
-  position: relative;
-}
+	.img-zoom-container {
+		position: relative;
+	}
 
-.img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
-  width: 70px;
-  height: 70px;
-}
+	.img-zoom-lens {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		/*set the size of the lens:*/
+		width: 70px;
+		height: 70px;
+	}
 
-.img-zoom-result {
-  border: 1px solid #d4d4d4;
-  /*set the size of the result div:*/
-  width: 200px;
-  height: 200px;
-  margin-left: 120px;
-}
+	.img-zoom-result {
+		border: 1px solid #d4d4d4;
+		/*set the size of the result div:*/
+		width: 200px;
+		height: 200px;
+		margin-left: 120px;
+	}
 </style>
 <script>
-function imageZoom(imgID, resultID) {
-  var img, lens, result, cx, cy;
-  img = document.getElementById(imgID);
-  result = document.getElementById(resultID);
-  /*create lens:*/
-  lens = document.createElement("DIV");
-  lens.setAttribute("class", "img-zoom-lens");
-  /*insert lens:*/
-  img.parentElement.insertBefore(lens, img);
-  /*calculate the ratio between result DIV and lens:*/
-  cx = result.offsetWidth / lens.offsetWidth;
-  cy = result.offsetHeight / lens.offsetHeight;
-  /*set background properties for the result DIV:*/
-  result.style.backgroundImage = "url('" + img.src + "')";
-  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
-  /*execute a function when someone moves the cursor over the image, or the lens:*/
-  lens.addEventListener("mousemove", moveLens);
-  img.addEventListener("mousemove", moveLens);
-  /*and also for touch screens:*/
-  lens.addEventListener("touchmove", moveLens);
-  img.addEventListener("touchmove", moveLens);
-  function moveLens(e) {
-    var pos, x, y;
-    /*prevent any other actions that may occur when moving over the image:*/
-    e.preventDefault();
-    /*get the cursor's x and y positions:*/
-    pos = getCursorPos(e);
-    /*calculate the position of the lens:*/
-    x = pos.x - (lens.offsetWidth / 2);
-    y = pos.y - (lens.offsetHeight / 2);
-    /*prevent the lens from being positioned outside the image:*/
-    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
-    if (x < 0) {x = 0;}
-    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
-    if (y < 0) {y = 0;}
-    /*set the position of the lens:*/
-    lens.style.left = x + "px";
-    lens.style.top = y + "px";
-    /*display what the lens "sees":*/
-    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
-  }
-  function getCursorPos(e) {
-    var a, x = 0, y = 0;
-    e = e || window.event;
-    /*get the x and y positions of the image:*/
-    a = img.getBoundingClientRect();
-    /*calculate the cursor's x and y coordinates, relative to the image:*/
-    x = e.pageX - a.left;
-    y = e.pageY - a.top;
-    /*consider any page scrolling:*/
-    x = x - window.pageXOffset;
-    y = y - window.pageYOffset;
-    return {x : x, y : y};
-  }
-}
+	function imageZoom(imgID, resultID) {
+		var img, lens, result, cx, cy;
+		img = document.getElementById(imgID);
+		result = document.getElementById(resultID);
+		/*create lens:*/
+		lens = document.createElement("DIV");
+		lens.setAttribute("class", "img-zoom-lens");
+		/*insert lens:*/
+		img.parentElement.insertBefore(lens, img);
+		/*calculate the ratio between result DIV and lens:*/
+		cx = result.offsetWidth / lens.offsetWidth;
+		cy = result.offsetHeight / lens.offsetHeight;
+		/*set background properties for the result DIV:*/
+		result.style.backgroundImage = "url('" + img.src + "')";
+		result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		/*execute a function when someone moves the cursor over the image, or the lens:*/
+		lens.addEventListener("mousemove", moveLens);
+		img.addEventListener("mousemove", moveLens);
+		/*and also for touch screens:*/
+		lens.addEventListener("touchmove", moveLens);
+		img.addEventListener("touchmove", moveLens);
+		function moveLens(e) {
+			var pos, x, y;
+			/*prevent any other actions that may occur when moving over the image:*/
+			e.preventDefault();
+			/*get the cursor's x and y positions:*/
+			pos = getCursorPos(e);
+			/*calculate the position of the lens:*/
+			x = pos.x - (lens.offsetWidth / 2);
+			y = pos.y - (lens.offsetHeight / 2);
+			/*prevent the lens from being positioned outside the image:*/
+			if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+			if (x < 0) { x = 0; }
+			if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+			if (y < 0) { y = 0; }
+			/*set the position of the lens:*/
+			lens.style.left = x + "px";
+			lens.style.top = y + "px";
+			/*display what the lens "sees":*/
+			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		}
+		function getCursorPos(e) {
+			var a, x = 0, y = 0;
+			e = e || window.event;
+			/*get the x and y positions of the image:*/
+			a = img.getBoundingClientRect();
+			/*calculate the cursor's x and y coordinates, relative to the image:*/
+			x = e.pageX - a.left;
+			y = e.pageY - a.top;
+			/*consider any page scrolling:*/
+			x = x - window.pageXOffset;
+			y = y - window.pageYOffset;
+			return { x: x, y: y };
+		}
+	}
 </script>
 <script>
-// Initiate zoom effect:
-imageZoom("myimage", "myresult");
+	// Initiate zoom effect:
+	imageZoom("myimage", "myresult");
 </script>
 
-		<!-- jQuery -->
-        <script src="/assets/js/jquery-3.2.1.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-        <script src="/assets/js/popper.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
-		
-		<!-- Slimscroll JS -->
-        <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-		
-		<script src="/assets/plugins/raphael/raphael.min.js"></script>    
-		<script src="/assets/plugins/morris/morris.min.js"></script>  
-		<script src="/assets/js/chart.morris.js"></script>
-		
-		<!-- Custom JS -->
-		<script  src="/assets/js/script.js"></script>
+<!-- jQuery -->
+<script src="/assets/js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!-- Slimscroll JS -->
+<script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="/assets/plugins/raphael/raphael.min.js"></script>
+<script src="/assets/plugins/morris/morris.min.js"></script>
+<script src="/assets/js/chart.morris.js"></script>
+
+<!-- Custom JS -->
+<script src="/assets/js/script.js"></script>
+<script src="/assets/js/product.js"></script>
 
 
 
 
 
- {{!-- new --}}
+{{!-- new --}}
+<script>
 
+
+	var email = document.getElementById('emial').value;
+	var semail = document.getElementById('semial').value;
+
+	document.getElementById('chatwithseller').addEventListener('click', function () {
+
+		var body = {
+			uEmail: email,
+			sEmail: semail
+		}
+
+		axios({
+			method: 'post',
+			url: '/users/crate/warning',
+			data: body
+		})
+			.then(() => {
+
+			})
+			.catch(function (error) {
+				console.log(error.response);
+			});
+		console.log(semail, email)
+
+		chatInitiator();
+
+	})
+
+</script>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	.img-zoom-container {
+		position: relative;
+	}
+
+	.img-zoom-lens {
+		position: absolute;
+		border: 1px solid #d4d4d4;
+		/*set the size of the lens:*/
+		width: 70px;
+		height: 70px;
+	}
+
+	.img-zoom-result {
+		border: 1px solid #d4d4d4;
+		/*set the size of the result div:*/
+		width: 200px;
+		height: 200px;
+		margin-left: 120px;
+	}
+</style>
+<script>
+	function imageZoom(imgID, resultID) {
+		var img, lens, result, cx, cy;
+		img = document.getElementById(imgID);
+		result = document.getElementById(resultID);
+		/*create lens:*/
+		lens = document.createElement("DIV");
+		lens.setAttribute("class", "img-zoom-lens");
+		/*insert lens:*/
+		img.parentElement.insertBefore(lens, img);
+		/*calculate the ratio between result DIV and lens:*/
+		cx = result.offsetWidth / lens.offsetWidth;
+		cy = result.offsetHeight / lens.offsetHeight;
+		/*set background properties for the result DIV:*/
+		result.style.backgroundImage = "url('" + img.src + "')";
+		result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		/*execute a function when someone moves the cursor over the image, or the lens:*/
+		lens.addEventListener("mousemove", moveLens);
+		img.addEventListener("mousemove", moveLens);
+		/*and also for touch screens:*/
+		lens.addEventListener("touchmove", moveLens);
+		img.addEventListener("touchmove", moveLens);
+		function moveLens(e) {
+			var pos, x, y;
+			/*prevent any other actions that may occur when moving over the image:*/
+			e.preventDefault();
+			/*get the cursor's x and y positions:*/
+			pos = getCursorPos(e);
+			/*calculate the position of the lens:*/
+			x = pos.x - (lens.offsetWidth / 2);
+			y = pos.y - (lens.offsetHeight / 2);
+			/*prevent the lens from being positioned outside the image:*/
+			if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+			if (x < 0) { x = 0; }
+			if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+			if (y < 0) { y = 0; }
+			/*set the position of the lens:*/
+			lens.style.left = x + "px";
+			lens.style.top = y + "px";
+			/*display what the lens "sees":*/
+			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		}
+		function getCursorPos(e) {
+			var a, x = 0, y = 0;
+			e = e || window.event;
+			/*get the x and y positions of the image:*/
+			a = img.getBoundingClientRect();
+			/*calculate the cursor's x and y coordinates, relative to the image:*/
+			x = e.pageX - a.left;
+			y = e.pageY - a.top;
+			/*consider any page scrolling:*/
+			x = x - window.pageXOffset;
+			y = y - window.pageYOffset;
+			return { x: x, y: y };
+		}
+	}
+</script>
 
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

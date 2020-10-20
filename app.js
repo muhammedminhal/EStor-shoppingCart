@@ -27,34 +27,35 @@ mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (
     const database = client.db("eStore")
     app.locals.db = database;
 
-
-
-    // socket connction
-    io.on('connection', (socket) => {
-      console.log('a user connected')
-
-      socket.on("join-room", body => {
-        socket.join(body)
-        console.log("a user joined on room via join room event: ", body)
-      })
-      socket.on('userRoom', (useremail) => {
-        socket.join(useremail)
-        console.log('buyer has created a room:', useremail)
-      })
-      socket.on('message', (msg) => {
-        var database = app.locals.db
-        database.collection('message').insertOne({
-          message: msg,
-        }, () => {
-          socket.broadcast.emit('message', msg)
-        })
-      })
-
-      socket.on('disconnect', () => {
-        console.log('user left connection')
-      })
-    })
+    
   }
+})
+
+
+io.on("connection", (socket) => {
+  if(socket.handshake.query.email_address){
+    //create a room
+    const email_address = socket.handshake.query.email_address;
+    socket.join(email_address);
+    console.log(email_address, "created a room and joined in it");
+  }
+
+  if(socket.handshake.query.target){
+    const target = socket.handshake.query.target;
+    socket.join(target);
+    console.log("a user joined the room", target);
+    //pull message from db
+    //loop emit to room as "message"
+    
+  }
+
+  socket.on("message", (body) => {
+    const { message, target } = body;
+    console.log(message);
+    console.log(target)
+    io.to(target).emit("message", message);
+  })
+
 })
 
 

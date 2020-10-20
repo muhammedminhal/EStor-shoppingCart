@@ -209,7 +209,7 @@
 								<input type="hidden" value="{{this.uEmail}}" id="buyer">
 								
 									<h6 style="text-transform: uppercase;">{{this.uEmail}} Wants to Chat With You</h6>
-									<button onclick="buttons(this)"  data-mail="{{this.uEmail}}" class="btn btn-danger">Chat With Customer</button>
+									<button onclick="sellerJoinHandler(this)"  data-mail="{{this.uEmail}}" class="btn btn-danger">Chat With Customer</button>
 								</div>
 								{{/each}}
 									
@@ -223,29 +223,6 @@
 
 					<script>
 
-
-function buttons (mail) {
-	 var uMail = mail.getAttribute("data-mail");
-	 console.log(uMail)
-	var socket =  io()
-	console.log(socket.emit + "masssss")
-	console.log("buyer shoud be user",uMail)
-	socket.emit('join-room', uMail);
-		document.location.href ='/users/chat'
-
-
-}
-
-
-
-
-						 function getuser() {
-							var socket = io()
-							var buyer = document.getElementById('buyer').value;
-							console.log("buyer shoud be user",buyer)
-							socket.emit('join-room', buyer);
-							document.location.href = "/users/chat"
-						}
 					</script>
 					{{!-- cards --}}
 				</div>
@@ -300,3 +277,4 @@ function buttons (mail) {
 
 <!-- Custom JS -->
 <script src="/assets/js/script.js"></script>
+<script src="/assets/js/product.js"></script>
