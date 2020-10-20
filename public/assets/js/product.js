@@ -19,18 +19,34 @@ const InitiatorJoin = () => {
     });
     const textarea = document.getElementById('textarea');
     
+    const senderEmail = document.getElementById("uEmail").value;
+
+
     textarea.addEventListener('keyup', (e) => {
 		if (e.key === 'Enter') {
             let messageObject = {
                 message: e.target.value,
-                target: roomInitiatorEmail
+                target: roomInitiatorEmail,
+                origin: senderEmail
             }
+
+            console.log
             socket.emit("message", messageObject);
+            //appendMessage() //outgoing
+
 		}
     })
     
-    socket.on("message", (message) => {
-        console.log(message)
+    socket.on("message", (body) => {
+        console.log(body.message)
+        //appendMessage() //incoming
+        const messageObject = {
+            message: body.message,
+            origin: body.origin
+
+        }
+        appendMessage(messageObject,"incoming")
+
     })
 
 }

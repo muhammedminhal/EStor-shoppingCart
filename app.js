@@ -50,10 +50,11 @@ io.on("connection", (socket) => {
   }
 
   socket.on("message", (body) => {
-    const { message, target } = body;
+    const { message, target, origin } = body;
     console.log(message);
     console.log(target)
-    io.to(target).emit("message", message);
+    console.log("origin: ", origin)
+    io.to(target).emit("message", body);
   })
 
 })

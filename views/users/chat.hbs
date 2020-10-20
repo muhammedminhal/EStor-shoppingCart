@@ -311,22 +311,21 @@
 	}
 
 
-	function appendMessage(msg, type) {
 
+
+	function appendMessage(data) {
+		console.log(data)
 		let mainDiv = document.createElement('div');
 
-		let className = type
-
-		mainDiv.classList.add(className, 'message')
-
-		let markup = `
-
-<h4> ${msg.user}<h4>
-<p>${msg.message}<p>
-
-`
+		let markup = `<p>${data.message}<p>`
 		mainDiv.innerHTML = markup
-		messageArea.appendChild(mainDiv)
+		if(data.origin === email){
+			mainDiv.classList.add("outgoing", 'message')
+        	messageArea.appendChild(mainDiv)
+		}else{
+			mainDiv.classList.add("incoming", 'message')
+        	messageArea.appendChild(mainDiv)
+		}
 	}
 
 

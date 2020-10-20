@@ -491,7 +491,7 @@ exports.chatGet = async (req, res) => {
     if(err){
       res.redirect('/signin')
     }else{
-      var userEmail = req.params.email;
+      var userEmail = req.cookies.userData;
       var sellerEmail = req.params.selleremail;
       const useremail = { "email": userEmail } 
       try {
@@ -504,6 +504,7 @@ exports.chatGet = async (req, res) => {
             }
             await database.collection('chat').insertOne(data)
 
+            console.log("emailghhvhbvbhvbhvbhvhvhvhvvvhvhbvhvgcddcggcghn ffvgbfvffdfygfb")
 
             res.render('users/chat', { data: data,login: true })
           }
@@ -553,8 +554,4 @@ exports.warning = async (req, res) => {
   } catch (err) {
     throw err
   }
-}
-
-exports.chatGet = (req, res) => {
-  res.render('users/chat')
 }
