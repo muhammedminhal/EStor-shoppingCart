@@ -487,6 +487,7 @@ exports.profileEditPost = async (req, res) => {
 
 exports.chatGet = async (req, res) => {
   let token = req.cookies.accessToken
+
   jwt.verify(token,'secret',async(err,decode)=>{
     if(err){
       res.redirect('/signin')
@@ -503,9 +504,6 @@ exports.chatGet = async (req, res) => {
               uEmail: data.email
             }
             await database.collection('chat').insertOne(data)
-
-            console.log("emailghhvhbvbhvbhvbhvhvhvhvvvhvhbvhvgcddcggcghn ffvgbfvffdfygfb")
-
             res.render('users/chat', { data: data,login: true })
           }
         })
@@ -523,23 +521,38 @@ exports.sellerChat = async (req, res) => {
 }
 
 exports.notification = async (req, res) => {
+  let token = req.cookies.accessToken
   let userEmail = req.cookies.userData
-
+  const useremail = { "email": userEmail } 
   let email = { "sEmail": userEmail }
   console.log("minhal ckookie",email);
-  try {
-    var database = req.app.locals.db;
-    let chat = await database.collection('chat').find(email)
-    var ChatData = []
-    await chat.forEach(data => {
-      ChatData.push(data)
-    })
-  console.log("aray data",ChatData);
-    res.render('users/notifications', { docs: ChatData,login: true })
 
-  } catch (err) {
-    throw err
-  }
+  jwt.verify(token,'secret',async(err,decode)=>{
+    if(!err){
+      try {
+        var database = req.app.locals.db;
+        await database.collection('user').findOne(useremail, async (err, data)=>{
+          if(!err){
+            let chat = await database.collection('chat').find(email)
+            var ChatData = []
+            await chat.forEach(data => {
+              ChatData.push(data)
+            })
+          console.log("aray data",ChatData);
+            res.render('users/notifications', { docs: ChatData,data:data,login: true,user:"NO New Notifications" })
+        
+          }
+        } )
+     
+      } catch (err) {
+        throw err
+      }
+    }else{
+      res.redirect('/signin')
+    }
+  })
+ 
+  
 }
 
 exports.warning = async (req, res) => {
@@ -552,6 +565,23 @@ exports.warning = async (req, res) => {
       sEmail: semail
     })
   } catch (err) {
+    throw err
+  }
+}
+
+exports.delete = async(req,res)=>{
+  console.log("Delete One")
+  deleteID = req.body.id
+  console.log(deleteID)
+  const deleteParams = { "_id": objectId(deleteID) }
+  try {
+    const database = req.app.locals.db;
+    const collection = await database.collection('chat')
+    collection.deleteOne(deleteParams, (err, data) => {
+     res.sendStatus(200)
+    })
+  }
+  catch (err) {
     throw err
   }
 }

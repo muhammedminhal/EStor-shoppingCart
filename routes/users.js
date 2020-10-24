@@ -83,8 +83,8 @@ router
   .post('/profile', userController.profilePost)
   // buyer warning sent to seller through axios from client
   .post('/crate/warning', userController.warning)
-
- 
+  //Delete notification
+   .post("/notificationDelete",userController.delete)
 
 function logedIn(req, res, next) {
   if (req.isAuthenticated()) {

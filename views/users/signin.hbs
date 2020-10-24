@@ -27,7 +27,7 @@
                                     
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="email" value="" placeholder=" email">                                        
+                                        <input id="login-username" type="text" class="form-control"  name="email"  placeholder=" email">                                        
                                     </div>
                                 
                             <div style="margin-bottom: 25px" class="input-group">
@@ -44,7 +44,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                       <button class="btn btn-success" type="submit">submit</button>
+                                       <button class="btn btn-success" onclick="name()" id="submit" type="submit">submit</button>
                                       <a id="btn-fblogin" href="/auth/google" class="btn btn-primary">Login with Google</a>
 
                                     </div>
@@ -62,9 +62,23 @@
                                     </div>
                                 </div>    
                             </form>     
-
-
-
                         </div>                     
                     </div>  
         </div>
+   <script src="/socket.io/socket.io.js"></script>
+
+   <script>
+document.getElementById('submit').addEventListener('click',
+       function(){
+            var socket = io.connect();
+          var email = document.getElementById('login-username').value;
+           socket.emit('new user',email)
+       })
+
+
+            
+
+  
+
+
+   </script>

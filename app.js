@@ -18,6 +18,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 const { body } = require('express-validator');
+const { users } = require('./contollers/admin');
+var binjo = {}
+
 
 mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (err, client) => {
   if (err) {
@@ -27,37 +30,63 @@ mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (
     const database = client.db("eStore")
     app.locals.db = database;
 
+
+
+
+
+    io.on("connection", (socket) => {
+
+      socket.on('new user',(data)=>{
+       
+        socket.name =data;
+        binjo[socket.name] = socket;
+      })
+    
+      socket.on('chatIntraction',function(data){
+       var  user ={
+           uemail :data.uEmail,
+           semail :data.sEmail
+        }
+      
+        database.collection('notification').insertOne(user)
+      })
+    
+      if(socket.handshake.query.email_address){
+        //create a room
+        const email_address = socket.handshake.query.email_address;
+        socket.join(email_address);
+        console.log(email_address, "created a room and joined in it");
+      }
+    
+      if(socket.handshake.query.target){
+        const target = socket.handshake.query.target;
+        socket.join(target);
+        console.log("a user joined the room", target);
+        //pull message from db
+        //loop emit to room as "message"
+        
+      }
+    
+      socket.on("message", (body) => {
+        const { message, target, origin } = body;
+        console.log(message);
+        console.log(target)
+        console.log("origin: ", origin)
+        io.to(target).emit("message", body);
+      })
+    
+    })
     
   }
 })
 
 
-io.on("connection", (socket) => {
-  if(socket.handshake.query.email_address){
-    //create a room
-    const email_address = socket.handshake.query.email_address;
-    socket.join(email_address);
-    console.log(email_address, "created a room and joined in it");
-  }
 
-  if(socket.handshake.query.target){
-    const target = socket.handshake.query.target;
-    socket.join(target);
-    console.log("a user joined the room", target);
-    //pull message from db
-    //loop emit to room as "message"
-    
-  }
 
-  socket.on("message", (body) => {
-    const { message, target, origin } = body;
-    console.log(message);
-    console.log(target)
-    console.log("origin: ", origin)
-    io.to(target).emit("message", body);
-  })
 
-})
+
+
+
 
 
 app.engine('hbs', expressHbs({ defaultLayout: 'layout', extname: 'hbs' }));

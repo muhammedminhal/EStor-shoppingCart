@@ -7,6 +7,16 @@ const chatInitiator = () => {
     });
     localStorage.setItem("roomInitiatorEmail", loggedUserEmail);
     document.location.href = "/users/chat";
+
+    var email = document.getElementById('emial').value;
+    var semail = document.getElementById('semial').value;
+    
+    var body = {
+        uEmail: email,
+        sEmail: semail
+    }
+
+    socket.emit('chatIntraction',body)
 }
 
 
@@ -29,32 +39,36 @@ const InitiatorJoin = () => {
                 target: roomInitiatorEmail,
                 origin: senderEmail
             }
-
             console.log
             socket.emit("message", messageObject);
+            
             //appendMessage() //outgoing
-
 		}
     })
-    
     socket.on("message", (body) => {
         console.log(body.message)
         //appendMessage() //incoming
         const messageObject = {
             message: body.message,
             origin: body.origin
-
         }
         appendMessage(messageObject,"incoming")
-
+        textarea.value = ""
+        messageScroll()
     })
-
 }
 
 const sellerJoinHandler = (data) => {
     const InitiatorEmail = data.getAttribute("data-mail");
     localStorage.setItem("roomInitiatorEmail", InitiatorEmail);
-    document.location.href = "/users/chat";
+    document.getElementById('card').style.display='none'
+    
+    const id = data.getAttribute("data-id")
+    axios.post("http://localhost:3000/users/notificationDelete",{id}).then(()=>{
+        
+       
+    })
+    document.location.href = "/users/chat"; 
 }
 
 const messageHandler = (socket) => {

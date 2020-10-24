@@ -1,3 +1,4 @@
+<!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
 
 <!-- Bootstrap CSS -->
@@ -16,21 +17,22 @@
 
 
 
+
 <!-- Main Wrapper -->
 <div class="main-wrapper">
 
-	<!-- Header -->
 	{{#if login}}
 	<div class="header" style="box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2);">
 
 		<!-- Logo -->
 		<div class="header-left">
 			<a href="/" class="logo">
-				<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+				<img src="/assets/img/Estorelogo.png" style="max-height: 115px;    border-radius: 84%;
     padding-bottom: 24px;" alt="Logo">
 			</a>
 			<a href="/" class="logo logo-small">
-				<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+				<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;    border-radius: 84%;" alt="Logo"
+					width="70" height="70">
 			</a>
 		</div>
 		<!-- /Logo -->
@@ -62,20 +64,23 @@
 			<!-- User Menu -->
 			<li class="nav-item dropdown has-arrow">
 				<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+					<img src="/uploads/{{data.image}}" width="30" height="30" style="border-radius: 30px;">
 
 				</a>
 				<div class="dropdown-menu">
 					<div class="user-header">
-						<div class="avatar avatar-sm">
 
-						</div>
+						<img src="/uploads/{{data.image}}" width="50" height="50" style="border-radius: 30px;">
+
 						<div class="user-text">
-							<h6>Ryan Taylor</h6>
+							<a href="/users/profile">
+								<h6 style="text-transform: capitalize;">{{data.name}}</h6>
+							</a>
 							<p class="text-muted mb-0">User</p>
 						</div>
 					</div>
-					<a class="dropdown-item" href="users/profile">My Profile</a>
-					<a class="dropdown-item" href="/users/logout">Logout</a>
+					<a class="dropdown-item" href="/users/profile">My Profile</a>
+					<a class="dropdown-item" href="/logout">Logout</a>
 				</div>
 			</li>
 			<!-- /User Menu -->
@@ -91,11 +96,12 @@
 		<!-- Logo -->
 		<div class="header-left">
 			<a href="/" class="logo">
-				<img src="/assets/img/Estorelogo.png" style="max-height: 115px;
+				<img src="/assets/img/Estorelogo.png" style="    border-radius: 84%;max-height: 115px;
     padding-bottom: 24px;" alt="Logo">
 			</a>
-			<a href="/" class="logo logo-small">
-				<img src="/assets/img/estoreSmalllogo.png" style="max-height: 70px;" alt="Logo" width="70" height="70">
+			<a href="index.html" class="logo logo-small">
+				<img src="/assets/img/estoreSmalllogo.png" style="    border-radius: 84%;max-height: 70px;" alt="Logo"
+					width="70" height="70">
 			</a>
 		</div>
 		<!-- /Logo -->
@@ -134,6 +140,7 @@
 					<div class="user-header">
 
 						<div class="user-text">
+
 
 							<p class="text-muted mb-0">User</p>
 						</div>
@@ -307,7 +314,6 @@
 		appendMessage(msg, 'outgoing')
 		textarea.value = ''
 		messageScroll()
-
 	}
 
 
