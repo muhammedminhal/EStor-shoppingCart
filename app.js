@@ -14,12 +14,13 @@ var passport = require('passport')
 var flash = require('connect-flash')
 
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 const { body } = require('express-validator');
 const { users } = require('./contollers/admin');
-var binjo = {}
+var online = {}
 
 
 mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (err, client) => {
@@ -31,42 +32,22 @@ mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (
     app.locals.db = database;
 
 
-
-
-
     io.on("connection", (socket) => {
-
-      socket.on('new user',(data)=>{
-       
-        socket.name =data;
-        binjo[socket.name] = socket;
-      })
-    
-      socket.on('chatIntraction',function(data){
-       var  user ={
-           uemail :data.uEmail,
-           semail :data.sEmail
-        }
-      
-        database.collection('notification').insertOne(user)
-      })
-    
+// loged users email is saved as socket id 
+   
       if(socket.handshake.query.email_address){
         //create a room
         const email_address = socket.handshake.query.email_address;
         socket.join(email_address);
         console.log(email_address, "created a room and joined in it");
       }
-    
+
       if(socket.handshake.query.target){
         const target = socket.handshake.query.target;
         socket.join(target);
         console.log("a user joined the room", target);
-        //pull message from db
-        //loop emit to room as "message"
-        
       }
-    
+
       socket.on("message", (body) => {
         const { message, target, origin } = body;
         console.log(message);
@@ -74,19 +55,9 @@ mongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (
         console.log("origin: ", origin)
         io.to(target).emit("message", body);
       })
-    
     })
-    
   }
 })
-
-
-
-
-
-
-
-
 
 
 app.engine('hbs', expressHbs({ defaultLayout: 'layout', extname: 'hbs' }));
@@ -101,7 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   name: "users",
-  secret: 'uppupantte mundiringa',
+  secret: 'secret',
   resave: false,
   saveUninitialized: true,
   cookie:
@@ -132,8 +103,6 @@ app.use(express.static(__dirname + "./public/"));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter)
-
-
 
 
 const port = 3000;

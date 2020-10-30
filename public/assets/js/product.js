@@ -10,13 +10,14 @@ const chatInitiator = () => {
 
     var email = document.getElementById('emial').value;
     var semail = document.getElementById('semial').value;
-    
+    console.log("useremail:",email,"seller email:",semail)
     var body = {
         uEmail: email,
         sEmail: semail
     }
 
-    socket.emit('chatIntraction',body)
+  
+
 }
 
 
@@ -59,16 +60,17 @@ const InitiatorJoin = () => {
 }
 
 const sellerJoinHandler = (data) => {
+ 
     const InitiatorEmail = data.getAttribute("data-mail");
     localStorage.setItem("roomInitiatorEmail", InitiatorEmail);
     document.getElementById('card').style.display='none'
     
     const id = data.getAttribute("data-id")
+
     axios.post("http://localhost:3000/users/notificationDelete",{id}).then(()=>{
-        
-       
     })
     document.location.href = "/users/chat"; 
+    
 }
 
 const messageHandler = (socket) => {

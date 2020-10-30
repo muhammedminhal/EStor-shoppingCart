@@ -226,7 +226,7 @@ exports.product = async (req, res) => {
             await database.collection('user').findOne(email, (err, user) => {
               if (!err) {
                 res.render("users/product", { docs: docs, user: user, data: data, login: true })
-              } else {
+              }else {
                 throw err
               }
             })
@@ -539,21 +539,21 @@ exports.notification = async (req, res) => {
               ChatData.push(data)
             })
           console.log("aray data",ChatData);
-            res.render('users/notifications', { docs: ChatData,data:data,login: true,user:"NO New Notifications" })
-        
+            res.render('users/notifications', { docs: ChatData,data:data,login: true,user:"NO New Notifications" })         
           }
         } )
-     
+
       } catch (err) {
         throw err
       }
     }else{
       res.redirect('/signin')
     }
-  })
- 
-  
+  })  
 }
+
+
+
 
 exports.warning = async (req, res) => {
   uemail = req.body.uEmail
@@ -568,6 +568,9 @@ exports.warning = async (req, res) => {
     throw err
   }
 }
+
+
+
 
 exports.delete = async(req,res)=>{
   console.log("Delete One")
