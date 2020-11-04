@@ -9,15 +9,15 @@ var flash = require('connect-flash')
 
 exports.index = async function(req, res) {
     var userEmail = req.cookies.userData;
- 
+    const database =req.app.locals.db;
+    const collection = database.collection('products')
+    const Category = database.collection('category')
+    const users = database.collection('user')
+    var email ={"email":userEmail}
+    var userEmail = req.cookies.userData;
   
         try{
-          const database =req.app.locals.db;
-          const collection = database.collection('products')
-          const Category = database.collection('category')
-          const users = database.collection('user')
-          var email ={"email":userEmail}
-          var userEmail = req.cookies.userData;
+          
           await users.findOne(email,async(err,docs)=>{
          
             if(docs){

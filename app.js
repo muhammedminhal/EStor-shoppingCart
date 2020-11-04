@@ -23,7 +23,7 @@ const { users } = require('./contollers/admin');
 var online = {}
 
 
-mongoClient.connect('mongodb+srv://minhal:minhal123kizhakkayil@cluster0.hpqom.mongodb.net/Estore?retryWrites=true&w=majority', { useUnifiedTopology: true }, (err, client) => {
+mongoClient.connect('mongodb://localhost:27017/eStore', { useUnifiedTopology: true,useUnifiedTopology: true }, (err, client) => {
   if (err) {
     console.error(`error in db connection ${err}`)
   } else {
